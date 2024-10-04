@@ -31,6 +31,9 @@ const hbs = exphbs.create()
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+//registering the partial for login.handlebars, define the routes
+
+
 // Use express native json middleware
 app.use(express.json());
 // Use express native url encoding
