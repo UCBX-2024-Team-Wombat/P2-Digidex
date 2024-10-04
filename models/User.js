@@ -38,7 +38,7 @@ User.init({
         allownull: false,
         validate: {
             len: [8],
-        }
+        },
     },
    
 
@@ -53,9 +53,20 @@ User.init({
             return newUserData;
         },
         
-        
-    }
-},
+        // hook runs before updating an exisiting users data 
+        beforeUpdate: async (newUserData) => {
+            // only hash the password if it changed
+            if (updatedUserData){
+                updatedUserData.password= await bcrypt.hash(updatedUserData.password, 10)
+                
+            }
+            return updatedUserData;
+        },
+    },
+  },
+  
+
+}
 
 )
 module.exports = User
