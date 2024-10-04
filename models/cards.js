@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 
 class Card extends Model {}
 
-/* 
+/* commenting out until we discusss proper attributes 
 Card.init(
     {
       id: {
@@ -20,7 +20,7 @@ Card.init(
       description: {
         type: DataTypes.STRING,
       },
-      tags: {
+      tag: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
