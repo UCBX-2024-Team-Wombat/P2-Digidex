@@ -11,7 +11,11 @@ class collection extends Model{
 collection.init (
     {
      title: {
+        type: Datatypes.STRING
         
-     }  
+     },  
+     UserId: {
+       
+     }
     }
 )
