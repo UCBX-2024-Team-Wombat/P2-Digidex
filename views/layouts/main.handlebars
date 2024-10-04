@@ -28,7 +28,7 @@
             <li class="nav-item"><a
                 href="#"
                 class="nav-link"
-                data-nav-id="search"
+                data-nav-id="nav-search"
               >Search</a></li>
             <li class="nav-item"><a href="#" class="nav-link" data-nav-id="">New
                 Collection</a></li>
@@ -78,17 +78,35 @@
         <!-- Modal -->
         <div
           class="modal fade"
-          id="exampleModal"
+          id="modal-search"
           tabindex="-1"
-          aria-labelledby="exampleModalLabel"
+          aria-labelledby="search-modal-label"
           aria-hidden="true"
         >
           <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                  Search For:
+                <h5 class="modal-title" id="search-modal-label">
+                  <div class="row g-3 align-items-center">
+                      {{!-- Main Label --}}
+                    <div class="col-auto">
+                      <label
+                        for="search-text-input"
+                        class="col-form-label"
+                      >Search For:</label>
+                    </div>
+                    {{!-- Search Text Input --}}
+                    <div class="col-auto">
+                      <input
+                        type="text"
+                        id="search-text-input"
+                        placeholder="Type here"
+                        autofocus
+                      />
+                    </div>
+                  </div>
                 </h5>
+                {{!-- Close Button (X) --}}
                 <button
                   type="button"
                   class="btn-close"
@@ -96,10 +114,12 @@
                   aria-label="Close"
                 ></button>
               </div>
+              {{!-- Modal Body --}}
               <div class="modal-body">
                 ...
               </div>
               <div class="modal-footer">
+                {{!-- Close Button (Btn) --}}
                 <button
                   type="button"
                   class="btn btn-secondary"
@@ -118,6 +138,7 @@
       crossorigin="anonymous"
     ></script>
     {{! Local index script }}
+    <script src="/js/modal-handler.js"></script>
     <script src="/js/index.js"></script>
   </body>
 </html>
