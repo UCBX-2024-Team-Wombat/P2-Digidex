@@ -10,6 +10,6 @@ class collection extends Model{
 
 collection.init (
     {
-        
+       
     }
 )
