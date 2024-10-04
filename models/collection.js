@@ -13,9 +13,10 @@ collection.init (
      title: {
         type: Datatypes.STRING
         
+        
      },  
      UserId: {
-       
+       foreignKey: true
      }
     }
 )
