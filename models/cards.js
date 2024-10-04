@@ -35,5 +35,5 @@ Card.init(
     }
   );
   
-  module.exports = card;
+  module.exports = card; */
   
