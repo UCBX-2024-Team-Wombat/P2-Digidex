@@ -10,7 +10,7 @@ class User extends Model {
 }
 // user table initialize
 // user id, user name, user password and user email defined.
-//constrains are defined
+// constrains are defined
 User.init(
     {
         id: {
@@ -20,12 +20,14 @@ User.init(
             autoIcrement: true,
 
         },
-        // depends on our preferences, we can delete it or we can keep it. we will decide later about keeping user name and surname in our database 
-        // name: {
-        //     type: Datatypes.STRING,
-        //   allownull: true,
+        /*
+         depends on our preferences, we can delete it or we can keep it. we will decide later about keeping user name and surname in our database 
+         name: {
+            type: Datatypes.STRING,
+            allownull: true,
 
-        // },
+         },
+         */
         email: {
             type: Datatypes.STRING,
             allownull: false,
@@ -42,9 +44,8 @@ User.init(
             },
         },
 
-
     },
-    {
+    {  // --> Everything below here is OPTIONS OBJECT --> Where we add additional configuration 
         // add hooks for hashing password before creating or updating user
         hooks: {
             // hook runs before a new user is created
@@ -67,9 +68,9 @@ User.init(
         },
 
         sequelize, // The Sequelize instance
-        timestamps: false, // Disable Sequelize automatic timestamp fields 
+       // timestamps: false, // Disable Sequelize automatic timestamp fields   (created_at and updated_at)
         freezeTableName: true, // Prevent Sequelize from pluralizing the table name
-        underscored: true, // Use underscores in column names instead of camelCase
+        underscored: true, // Use underscores in column names instead of camelCase and we decided underscore instead of camelCase
         modelName: 'user', // Define the name of the model
     },
 
