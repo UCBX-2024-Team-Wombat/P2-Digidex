@@ -6,17 +6,27 @@ const searchTimerWaitTime = 500;
 
 // Listeners
 // ===============================
+
+// Click listener
 document.body.addEventListener('click', (event) => {
 
   const target = event.target;
   const targetId = event.target.id;
-  const navId = target.dataset.navId;
+  const isModal = event.target.dataset.isModal;  
 
-  if (navId != null){
-    modalHandler.openModal(navId);
+  // Pass clicked modal launchers to modal handler
+  if (isModal == 'yes'){
+    modalHandler.openModal(targetId);
   }
+
+  // Handle logout when logout clicked
+  if (targetId == 'account-dropdown-sign-out'){
+    handleLogout()
+  }
+
 });
 
+// Keydown listener
 document.body.addEventListener('keydown', (event) => {
 
   // Handle search text completion
@@ -38,6 +48,7 @@ document.body.addEventListener('keydown', (event) => {
   }
 })
 
+// Bootstrap show-modal event listener
 document.addEventListener('shown.bs.modal', () => {
   // Focus on text input if modal opened is search modal
   if (modalHandler.modalIsOpen('nav-search')){
@@ -46,6 +57,7 @@ document.addEventListener('shown.bs.modal', () => {
   }
 })
 
+// Bootstrap hide-modal event listener
 document.addEventListener('hidden.bs.modal', () => {
 
   // Clear values from all modal inputs on close modal event
@@ -64,4 +76,10 @@ function querySearchText(value){
   typedValues = value.split(' ')
   console.log(typedValues)
   // Next: Send search text payload to api for query
+}
+
+function handleLogout(){
+  console.log(`"logging out"`);
+  
+  // Pending login functionality established
 }
