@@ -29,6 +29,6 @@ Collections.init(
         }
     }
 )
-module.export = collection
+module.export = Collections
 
 // collection empty ise silelim mi? 
