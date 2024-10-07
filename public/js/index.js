@@ -36,7 +36,8 @@ document.body.addEventListener('keydown', (event) => {
 })
 
 function doneTyping(value){
-  console.log(`done typing: ${value}`)
+  typedValues = value.split(' ')
+  console.log(typedValues)
   // Next: Send search text payload to api for query
 }
 
