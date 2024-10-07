@@ -1,6 +1,8 @@
+// Globals
+// ===============================
 const modalHandler = new ModalHandler();
 let searchTimer;
-const searchTimerWaitTime = 750;
+const searchTimerWaitTime = 500;
 
 // Listeners
 // ===============================
@@ -20,26 +22,21 @@ document.body.addEventListener('keydown', (event) => {
   // Handle search text completion
   if (event.target.id == 'search-text-input'){
 
+    // Set keys to not consider in keydown for search text
     const keysToIgnore = [
       'Escape',
       'Enter'
     ];
-  
+    
     if (keysToIgnore.includes(event.key) == false){
-      clearTimeout(searchTimer)
+      clearTimeout(searchTimer) // Clear any existing timeouts from prior keydowns
   
-      searchTimer = setTimeout(() => {
-        doneTyping(event.target.value)
-      }, searchTimerWaitTime);
+      searchTimer = setTimeout(() => { // Set global searchTimer to timeout from setTimeout()
+        querySearchText(event.target.value) // When timeout complete, send entered text to search API
+      }, searchTimerWaitTime); // Wait time designated in global searchTimerWaitTime before running function
     }
   }
 })
-
-function doneTyping(value){
-  typedValues = value.split(' ')
-  console.log(typedValues)
-  // Next: Send search text payload to api for query
-}
 
 document.addEventListener('shown.bs.modal', () => {
   // Focus on text input if modal opened is search modal
@@ -61,3 +58,10 @@ document.addEventListener('hidden.bs.modal', () => {
 
 // Functions
 // ===============================
+
+// Queries passed string data to Card and Collection endpoints 
+function querySearchText(value){
+  typedValues = value.split(' ')
+  console.log(typedValues)
+  // Next: Send search text payload to api for query
+}
