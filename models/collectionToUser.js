@@ -1,6 +1,6 @@
 const { Model, Datatypes, INTEGER } = require('sequelize');
 const sequelize = require('../config/connection');
-// const bcyrpt = require ('bcyrpt);
+
 
 class CollectionToUser extends Model { };
 CollectionToUser.init(

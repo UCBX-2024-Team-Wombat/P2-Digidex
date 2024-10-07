@@ -1,5 +1,5 @@
 const { Model, Datatypes } = require('sequelize');
-// const bcrypt = require('bcrypt'); bunu her yerde istiyo muyuz ? 
+
 const sequelize = require('../config/connection');
 
 class Collections extends Model {
@@ -31,4 +31,3 @@ Collections.init(
 )
 module.export = Collections
 
-// collection empty ise silelim mi? 
