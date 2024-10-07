@@ -23,7 +23,13 @@ CollectionToUser.init(
             },
 
         },
+    },
+{
+    sequilze,
+    timestamps: false,
+    modelName: 'CollectionToUser',
+    tableName: 'collection_to_user',
 
-    })
+})
 module.exports = CollectionToUser;
 
