@@ -30,7 +30,7 @@ CardsToCollection.init(
     {
         sequlize, // passing sequlize option 
         modelName: 'CardsToCollection',
-        tableName: 'cards_to+collection',  //custom name can be add if needed
+        tableName: 'cards_to_collection',  //custom name can be add if needed
         timestamps: false // timestampa gerek yok diye dusunuyorum
 
     }
