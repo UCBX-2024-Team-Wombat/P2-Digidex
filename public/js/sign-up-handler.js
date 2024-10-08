@@ -20,7 +20,7 @@ const newUser = async (event) => {
             document.location.replace('/homepage');
         //else return to sign up page with instructions to fill out sections within the desired params
         }else {
-            document.location.replacce('/sign-up');
+            document.location.replace('/sign-up');
         }
     }
 };
