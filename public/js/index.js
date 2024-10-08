@@ -6,6 +6,29 @@ const searchTimerWaitTime = 500;
 
 // Listeners
 // ===============================
+
+document.body.addEventListener('input', (event) => {
+  console.log(event.target);
+  console.log(event.target.value);
+  console.log(event.target.files);
+
+  if(event.target.files){
+    uploadFile(event.target.files[0]);
+  }
+})
+
+async function uploadFile(fileData){
+
+  const res = await fetch('/api/upload/image', {
+    method: 'POST',
+    body: fileData
+  })
+
+  const resParsed = await res.json()
+
+  console.log(resParsed);
+}
+
 document.body.addEventListener('click', (event) => {
 
   const target = event.target;

@@ -1,6 +1,11 @@
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
+const fileUpload = require('express-fileupload');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const _ = require('lodash')
 const exphbs = require('express-handlebars');
 const routes = require('./controllers/index');
 const sequelize = require('./config/connection');
@@ -24,6 +29,14 @@ const sessionObject = {
 };
 
 app.use(session(sessionObject));
+app.use(fileUpload({
+  createParentPath: true
+}));
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 
 // Create handlebars object and set as app engine
 const hbs = exphbs.create()
