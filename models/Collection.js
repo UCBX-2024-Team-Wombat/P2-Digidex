@@ -1,4 +1,4 @@
-const { Model, Datatypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Collection extends Model {
@@ -16,7 +16,7 @@ Collection.init(
             autoIncrement: true,
         },
         title: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allownull: false,
         },
         user_id: {
@@ -26,7 +26,15 @@ Collection.init(
                 key: 'id',
             },
         }
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'collection',
     }
-)
-module.export = Collection
+);
+
+module.exports = Collection;
 
