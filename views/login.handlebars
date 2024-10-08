@@ -1,0 +1,38 @@
+<div>
+  <h2>Please log in:</h2>
+  <div>
+    <form class="form login-form" id="login-form">
+      {{!-- Email Address --}}
+      <div class="mb-3">
+        <label class='form-label' for="inputEmail">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          data-form-name="login"
+          id="inputEmail"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+        />
+        <div id="emailHelp" class="form-text text-muted">
+          We'll never share
+          your email with anyone else.</div>
+      </div>
+      {{!-- Password --}}
+      <div class="mb-3">
+        <label class='form-label' for="inputPassword">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          data-form-name="login"
+          id="inputPassword"
+          placeholder="Password"
+        />
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-primary" type="submit">login</button>
+      </div>
+      <p>No account? <a href="/signup">Sign up here</a>.</p>
+    </form>
+  </div>
+</div>
