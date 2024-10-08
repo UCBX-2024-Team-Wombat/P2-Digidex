@@ -1,12 +1,18 @@
-<section class="container">
+<section class="container"> <!-- the outer container holds a grid of card-->
+<!-- each loop generate a card for each item in the collection.model -->
     <div class="row">
         {{each collections}}
         <div class="col-md-4 mb-4">
             <div class="card h-100">
-                <h5 class="card-body position-relative"></h5> // EMPTY CARD BODY HOLD TITLE AND CONTENT LATER
-                <p class="card-text">{{this.description}}</p>
+                <h5 class="card-body position-relative"></h5> <!-- EMPTY CARD BODY HOLD TITLE AND CONTENT LATER-->
+                <p class="card-text">{{this.description}}</p> <!--description of each cardfrom card object-->
 
-
+                <!--Edit button-->
+                <button type="'button" class="btn btn-primary position-absolute top-0 end-0 m-2"
+                    data-bs-toogle= "modal"
+                    data-bs-target="#editModal-{{this.id}}">
+                    Edit
+                </button>
             </div>
         </div>
     </div>
