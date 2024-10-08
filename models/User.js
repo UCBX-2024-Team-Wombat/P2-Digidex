@@ -1,5 +1,5 @@
-const { Model, Datatypes }= require('sequelize'); // import Model and Datatypes classes from Sequelize.
-const bcrypt = require ( 'bcrypt' ); // import bcrypt library for hashing and comparing passwords
+const { Model, DataTypes } = require('sequelize'); // import Model and Datatypes classes from Sequelize.
+const bcrypt = require('bcrypt'); // import bcrypt library for hashing and comparing passwords
 const sequelize = require('../config/connection'); // imports database connections 
 
 // Define class user extend model to represent a table in database  
@@ -13,20 +13,20 @@ class User extends Model {
 //constrains are defined
 User.init({
     id: {
-        type: Datatypes.INTEGER,
+        type: DataTypes.INTEGER,
         allownull: false,
         primaryKey: true,
         autoIcrement: true,
-   
+
     },
     // depends on our preferences, we can delete it or we can keep it. we will decide later about keeping user name and surname in our database 
-   // name: {
-   //     type: Datatypes.STRING,
-     //   allownull: true,
-            
-   // },
+    // name: {
+    //     type: Datatypes.STRING,
+    //   allownull: true,
+
+    // },
     email: {
-        type: Datatypes.STRING,
+        type: DataTypes.STRING,
         allownull: false,
         unique: true,
         validate: {
@@ -34,14 +34,20 @@ User.init({
         }
     },
     password: {
-        type: Datatypes.STRING,
+        type: DataTypes.STRING,
         allownull: false,
         validate: {
-            len:[8],
+            len: [8],
         }
     },
+    },
+    {
+        sequelize, // DB connection instance (from import) 
+        timestamps: false,
+        freezeTableName: true, // Assures modelName is name of table in sql
+        underscored: true,
+        modelName: 'user'
 
-}
-
+    }
 )
 module.exports = User
