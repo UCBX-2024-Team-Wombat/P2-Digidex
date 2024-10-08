@@ -1,46 +1,41 @@
 //import necessary Libraries and Models 
-const Collections = require ('./Collections');
-const CardsToCollection = require ('./CardsToCollection')
+const Collection = require ('./Collection');
+const CardToCollection = require ('./CardToCollection');
 const User = require ('./User');
 const CollectionToUser = require('./CollectionToUser');
 
 // define relations
-//One user has many collection
-
-User.hasMany(Collection,{
+// One user has many collection
+User.hasMany(Collection, {
     foreignKey:'user_id',
-onDelete: 'CASCADE',
+    onDelete: 'CASCADE'
 });
 
-//on theother hand a collection also belongs to one user
-Collections.belongsTo(User,{
+//on the other hand a collection also belongs to one user
+Collection.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-// there is many to many relationship between cards and collections
-Collections.belongsToMany(Cards,{
-through: CardsToCollection,
-foreignKey: 'collectionID',
-otherKey: 'cardID', //after cards class created chweck there too
-onDelete: 'CASCADE'
+// there is many to many relationship between cards and Collection
+Collection.belongsToMany(Cards, {
+    through: CardToCollection,
+    foreignKey: 'collectionID'
 });
 
-Cards.belongsToMany(Collections,{
-    through: CardsToCollection,
+Cards.belongsToMany(Collection,{
+    through: CardToCollection,
     foreignKey: 'cardId', //DO NOT FORGET TO CHECK CARDS CLASS AFTER CREATED
-    otherKey: 'collectionId',
-    onDelete: 'CASCADE',
 });
 
-// Usewr and Collections also has many to many realitonsip (I ASSUMED USER AN SHARE THE COLLECTION WITH OTHER USERS),
-User.belongsToMany(Collections,{
+// Usewr and Collection also has many to many realitonsip (I ASSUMED USER AN SHARE THE COLLECTION WITH OTHER USERS),
+User.belongsToMany(Collection,{
     through: CollectionToUser, 
     foreignKey: 'userdD',
     other: 'collectionId',
     onDelete: 'CASCADE',
 })
 
-Collections.belongsToMany(User,{
+Collection.belongsToMany(User,{
     throug: CollectionToUser,
     foreignKey: 'collectionId',
     otherKey: 'userId',
@@ -50,9 +45,9 @@ Collections.belongsToMany(User,{
 //Export Models
 module.exports = {
     User,
-    Collections,
+    Collection,
     Cards,
-    CardsToCollection,
+    CardToCollection,
     CollectionToUser,
 };
 
