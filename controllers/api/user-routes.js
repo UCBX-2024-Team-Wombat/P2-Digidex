@@ -46,6 +46,16 @@ router.post("/login", async (req, res) => {
 // Sign-Up Endpoint(s)
 
 // Logout Endpoint(s)
+router.post('/logout', async (req, res) => {
+  if(req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    })
+  }
+  else {
+    res.status(400).end();
+  }
+});
 
 // Export
 
