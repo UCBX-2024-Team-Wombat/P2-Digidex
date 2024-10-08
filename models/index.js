@@ -1,7 +1,8 @@
 //import necessary Libraries and Models 
+const User = require('./User');
+const Card = require('./Card');
 const Collections = require ('./Collections');
 const CardsToCollection = require ('./CardsToCollection')
-const User = require ('./User');
 const CollectionToUser = require('./CollectionToUser');
 
 // define relations
@@ -56,3 +57,6 @@ module.exports = {
     CollectionToUser,
 };
 
+
+
+module.exports = { User, Card }
