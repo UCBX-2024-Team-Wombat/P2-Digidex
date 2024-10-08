@@ -10,28 +10,36 @@ router.post('/login', async (req, res) => {
           email: req.body.email,
         },
       });
-  
-      if (!dbUserData) {
+      console.log(dbUserData);
+      console.log(dbUserData == false);
+
+      if (dbUserData == false) {
         res
-          .status(400).json({ message: 'Incorrect email or password.' });
+        .status(200).json({ 
+          loginSuccessful: false,
+          message: 'Incorrect email or password.' });
         return;
       }
-  
+      
       const validPassword = await dbUserData.checkPassword(req.body.password);
-  
+      
       if (!validPassword) {
         res
-          .status(400)
-          .json({ message: 'Incorrect email or password. Please try again!' });
+        .status(200)
+        .json({ 
+          loginSuccessful: false,
+          message: 'Incorrect email or password. Please try again!' });
         return;
       }
-  
+      
       req.session.save(() => {
         req.session.loggedIn = true;
-  
+        
         res
-          .status(200)
-          .json({ user: dbUserData, message: 'You are now logged in!' });
+        .status(200)
+        .json({ user: dbUserData,
+          loginSuccessful: true,
+          message: 'You are now logged in!' });
       });
     } catch (err) {
       console.log(err);
