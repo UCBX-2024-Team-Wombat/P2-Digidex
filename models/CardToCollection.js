@@ -1,15 +1,17 @@
-const { Model, DataTypes } = require('sequlize');
-const sequlize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require("../config/connection");
+const Collection = require('./Collection');
+const Card = require('./Card');
 
 class CardToCollection extends Model { } // do we need any constructor ? discuss with group 
 
 CardToCollection.init(
     {
         collectionId: {
-            type: INTEGER,
+            type: DataTypes.INTEGER,
             allownull: false,
             refrences: {
-                model: 'Collection', //target name
+                model: Collection, //target name
                 key: 'id' //primary key of Collection Model
             },
             // onDelete: 'CASCADE', // discuss this
@@ -17,10 +19,10 @@ CardToCollection.init(
 
         },
         cardId: {
-            type: INTEGER,
+            type: DataTypes.INTEGER,
             allownull: false,
             references: {
-                model: 'Cards', //target table
+                model: Card, //target table
                 key: 'id', // Cards primary key 
 
             },
@@ -28,12 +30,12 @@ CardToCollection.init(
         },
     },
     {
-        sequlize, // passing sequlize option 
-        modelName: 'CardToCollection',
-        tableName: 'cards_to_collection',  //custom name can be add if needed
-        timestamps: false // timestampa gerek yok diye dusunuyorum
-
+        sequelize, // passing sequlize option 
+        timestamps: false, // timestampa gerek yok diye dusunuyorum
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'card_to_collection'
     }
-
 );
+
 module.exports = CardToCollection;
