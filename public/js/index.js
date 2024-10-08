@@ -36,3 +36,4 @@ router.put('/:id', async (req, res) => { // collection/:id, id is the placeholde
     
 });
 
+module.exports = router
