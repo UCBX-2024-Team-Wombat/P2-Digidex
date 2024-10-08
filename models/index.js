@@ -2,7 +2,7 @@
 const Collections = require ('./Collections');
 const CardsToCollection = require ('./CardsToCollection');
 const User = require ('./User');
-const CollectionToUser = require(./CollectionToUser);
+const CollectionToUser = require('./CollectionToUser');
 
 // define relations
 //One user has many collection
