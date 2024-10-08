@@ -1,5 +1,5 @@
 <section class="container"> <!-- the outer container holds a grid of card-->
-<!-- each loop generate a card for each item in the collection.model -->
+<!-- each loop generate a card for each item in the collection model -->
     <div class="row">
         {{each collections}}
         <div class="col-md-4 mb-4">
@@ -15,5 +15,17 @@
                 </button>
             </div>
         </div>
+    </div>
+    <!-- Edit modal for this Collestion -->
+        <!--Adding dynamic modals for each collection, linking 'Edit' buttons to unique modals using collection IDs for editing-->
+    <div class="modal fade" id="editModal-{{this.id}}" tabindex="-1" aria-labelledby="editModalLaber-{{this.id}}" aria-hidden="true">
+     <div class="modal-dialog">
+        <div class="model-content">
+            <div class="modal-header">
+                <h5 class=" modal-title" id="editModalLabel-{{this.id}}">Edit Collection</h5> 
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+        </div>
+     </div>
     </div>
 </section>
