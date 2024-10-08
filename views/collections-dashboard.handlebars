@@ -25,6 +25,14 @@
                 <h5 class=" modal-title" id="editModalLabel-{{this.id}}">Edit Collection</h5> 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div clas="modal-body">
+                <form id="edit-collection-form-{{this.id}}" data-collection-id="{{this.id}}" value="this.title">
+                    <div class="mb-3">
+                        <label for="collection-title-{{this.id}} " class="form-label">Collection Title</label>
+                        <input type="text" class="form-control" id="collection-title-{{this.id}}" value="{{this.title}}">
+                    </div>
+                </form>
+            </div>
         </div>
      </div>
     </div>
