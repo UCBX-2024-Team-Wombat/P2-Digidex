@@ -28,7 +28,16 @@
           placeholder="Password"
         />
       </div>
-
+      <div id="invalid-login-text" hidden>
+        <div class="text-danger">
+          Invalid username or password
+        </div>
+      </div>
+      <div id="login-server-error-text" hidden>
+        <div class="text-danger">
+          We're sorry, it looks like something went wrong. Please try again later.
+        </div>
+      </div>
       <div class="mb-3">
         <button class="btn btn-primary" type="submit">login</button>
       </div>
