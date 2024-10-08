@@ -24,3 +24,7 @@
   border: 0px;
   outline: none;
 }
+
+.welcome-col {
+  max-width: 400px;
+}
