@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models/index");
+const bcrypt = require('bcrypt');
 
 // Login Endpoint(s)
 // POST login endpoint
@@ -17,9 +18,9 @@ router.post("/login", async (req, res) => {
       res.status(401).send();
       return;
     }
-    
+
     // Check provided password against queried User
-    const validPassword = await dbUserData.checkPassword(req.body.password);
+    const validPassword = await bcrypt.compare(req.body.password, dbUserData.password);
 
     // If password invalid, return error
     if (!validPassword) {
