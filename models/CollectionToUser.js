@@ -9,8 +9,8 @@ CollectionToUser.init(
             type: INETEGER,
             allownull: false,
             refrences: {
-                model: 'Collections', // target model
-                key: 'id', //primary key of Collections
+                model: 'Collection', // target model
+                key: 'id', //primary key of Collection
 
             },
         },
