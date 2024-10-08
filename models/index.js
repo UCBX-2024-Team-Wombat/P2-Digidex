@@ -47,4 +47,12 @@ Collections.belongsToMany(User,{
     onDelete:'CASCADE',
 });
 
+//Export Models
+module.exports = {
+    User,
+    Collections,
+    Cards,
+    CardsToCollection,
+    CollectionToUser,
+};
 
