@@ -17,6 +17,33 @@ document.body.addEventListener('click', (event) => {
   }
 });
 
+document.body.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  // Query all forms on page
+  const forms = document.querySelectorAll('form');
+
+  // Create Form Id to Form data map
+  const formsMap = {}
+
+  for(const form of forms){
+    formsMap[form.id] = form;
+  }
+
+  // If queried forms includes login form
+  if(Object.keys(formsMap).includes('login-form')){
+
+    const formInputs = {
+      password: document.getElementById('inputPassword').value.trim(),
+      email: document.getElementById('inputEmail').value.trim()
+    }
+
+    console.log(formInputs);
+
+    handleLogin(formInputs)
+  }
+})
+
 document.body.addEventListener('keydown', (event) => {
 
   // Handle search text completion

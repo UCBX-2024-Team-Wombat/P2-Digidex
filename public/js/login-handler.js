@@ -1,28 +1,22 @@
-const loginFormHandler = async (event) => {
-    event.preventDefault();
-  
+async function handleLogin(credentials) {
     // Collect values from the login form
-    const email = document.querySelector('#inputEmail').value.trim();
-    const password = document.querySelector('#inputPassword').value.trim();
+    const { email, password } = credentials;
   
     if (email && password) {
       // Send a POST request to the API endpoint
       const response = await fetch('/api/user/login', {
         method: 'POST',
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(credentials),
         headers: { 'Content-Type': 'application/json' },
       });
   
-      if (response.ok) {
+      const responseParsed = await response.json()
+
+      if (responseParsed.loginSuccessful == true) {
         // If successful, redirect the browser to the home page
         document.location.replace('/homepage');
       } else {
-        alert(response.statusText);
+        alert(responseParsed.message);
       }
     }
   };
-  
-  
-  document
-    .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
