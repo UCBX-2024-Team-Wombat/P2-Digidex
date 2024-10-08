@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 
 class Card extends Model {}
 
-/* commenting out until we discusss proper attributes 
+
 Card.init(
     {
       id: {
@@ -20,11 +20,6 @@ Card.init(
       description: {
         type: DataTypes.STRING,
       },
-      tag: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
     },
     {
       sequelize,
@@ -35,5 +30,5 @@ Card.init(
     }
   );
   
-  module.exports = card; */
+  module.exports = Card; 
   
