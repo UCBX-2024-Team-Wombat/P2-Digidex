@@ -1,0 +1,10 @@
+<div class="card-collection"></div>
+    {{#each Cards}}
+        <div class="card">
+            <h3>{{this.title}}</h3>
+            <p>{{this.description}}</p>
+            <!-- an additional each loop <p>{{this.tags}}</p> -->
+            <!-- for each card, pass in the card tile -->
+        </div>
+    {{/each}}
+</div>
