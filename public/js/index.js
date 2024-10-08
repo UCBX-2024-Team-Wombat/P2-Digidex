@@ -18,5 +18,21 @@ router.put('/:id', async (req, res) => { // collection/:id, id is the placeholde
                 },
             }
         );
-    }
-})
+
+        // 404 msg if the id does not mach
+        if (!updatedCollection) {
+            res.status(404).json({
+                message: 'No collection found!'
+            });
+            return;
+        } //200 respond if is succesufully updates
+            res.status(200).json(updatedCollection);
+
+            // catch the arror if any hanppens in try block
+        } catch (err){
+            // 500 respond if any error occure
+            res.status(500).json(err);
+        }
+    
+});
+
