@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequlize');
 const sequlize = require("../config/connection");
 
-class CardsToCollection extends Model { } // do we need any constructor ? discuss with group 
+class CardToCollection extends Model { } // do we need any constructor ? discuss with group 
 
-CardsToCollection.init(
+CardToCollection.init(
     {
         collectionId: {
             type: INTEGER,
@@ -29,11 +29,11 @@ CardsToCollection.init(
     },
     {
         sequlize, // passing sequlize option 
-        modelName: 'CardsToCollection',
+        modelName: 'CardToCollection',
         tableName: 'cards_to_collection',  //custom name can be add if needed
         timestamps: false // timestampa gerek yok diye dusunuyorum
 
     }
 
 );
-module.exports = CardsToCollection;
+module.exports = CardToCollection;
