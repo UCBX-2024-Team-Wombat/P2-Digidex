@@ -1,8 +1,11 @@
 //import necessary Libraries and Models 
+const User = require ('./User');
+const Card = require('./Card');
 const Collection = require ('./Collection');
 const CardToCollection = require ('./CardToCollection');
-const User = require ('./User');
 const CollectionToUser = require('./CollectionToUser');
+
+
 
 // define relations
 // One user has many collection
@@ -46,7 +49,7 @@ Collection.belongsToMany(User,{
 module.exports = {
     User,
     Collection,
-    Cards,
+    Card,
     CardToCollection,
     CollectionToUser,
 };
