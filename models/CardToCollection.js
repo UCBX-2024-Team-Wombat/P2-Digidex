@@ -9,7 +9,7 @@ CardsToCollection.init(
             type: INTEGER,
             allownull: false,
             refrences: {
-                model: 'Collections', //target name
+                model: 'Collection', //target name
                 key: 'id' //primary key of Collection Model
             },
             // onDelete: 'CASCADE', // discuss this
