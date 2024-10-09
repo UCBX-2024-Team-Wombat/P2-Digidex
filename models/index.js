@@ -5,8 +5,6 @@ const Collection = require ('./Collection');
 const CardToCollection = require ('./CardToCollection');
 const CollectionToUser = require('./CollectionToUser');
 
-
-
 // define relations
 // One user has many collection
 User.hasMany(Collection, {
@@ -20,12 +18,12 @@ Collection.belongsTo(User, {
 });
 
 // there is many to many relationship between cards and Collection
-Collection.belongsToMany(Cards, {
+Collection.belongsToMany(Card, {
     through: CardToCollection,
     foreignKey: 'collectionID'
 });
 
-Cards.belongsToMany(Collection,{
+Card.belongsToMany(Collection,{
     through: CardToCollection,
     foreignKey: 'cardId', //DO NOT FORGET TO CHECK CARDS CLASS AFTER CREATED
 });
@@ -39,10 +37,8 @@ User.belongsToMany(Collection,{
 })
 
 Collection.belongsToMany(User,{
-    throug: CollectionToUser,
-    foreignKey: 'collectionId',
-    otherKey: 'userId',
-    onDelete:'CASCADE',
+    through: CollectionToUser,
+    foreignKey: 'collectionId'
 });
 
 //Export Models
