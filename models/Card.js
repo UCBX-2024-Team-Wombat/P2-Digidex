@@ -4,7 +4,6 @@ const sequelize = require('../config/connection');
 
 class Card extends Model {}
 
-
 Card.init(
     {
       id: {
@@ -18,7 +17,7 @@ Card.init(
         allowNull: false,
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
     },
     {

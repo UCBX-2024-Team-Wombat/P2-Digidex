@@ -36,7 +36,7 @@ User.init(
       allownull: false,
       unique: true,
       validate: {
-        isemail: true,
+        isEmail: true,
       },
     },
     password: {
