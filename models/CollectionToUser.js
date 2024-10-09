@@ -7,6 +7,12 @@ class CollectionToUser extends Model { };
 
 CollectionToUser.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true
+        },
         collectionId: {
             type: DataTypes.INTEGER,
             allownull: false,
