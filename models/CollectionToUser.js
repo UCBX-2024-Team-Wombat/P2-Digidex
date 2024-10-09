@@ -1,35 +1,39 @@
-const { Model, Datatypes, INTEGER } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-
+const Collection = require('./Collection')
+const User = require('./User');
 
 class CollectionToUser extends Model { };
+
 CollectionToUser.init(
     {
         collectionId: {
-            type: INETEGER,
+            type: DataTypes.INTEGER,
             allownull: false,
             refrences: {
-                model: 'Collection', // target model
+                model: Collection, // target model
                 key: 'id', //primary key of Collection
 
             },
         },
         userId: {
-            type: INTEGER,
+            type: DataTypes.INTEGER,
             allownull: false,
             refrences: {
-                model: 'User',
+                model: User,
                 key: 'id', // primary key of USer
             },
 
         },
     },
-{
-    sequilze,
-    timestamps: false,
-    modelName: 'CollectionToUser',
-    tableName: 'collection_to_user',
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        tableName: 'collection_to_user'
+    }
+);
 
-})
 module.exports = CollectionToUser;
 
