@@ -96,8 +96,10 @@ document.body.addEventListener("keydown", (event) => {
 
       searchTimer = setTimeout(async () => {
         // Set global searchTimer to timeout from setTimeout()
-        const records = await querySearchText(event.target.value); // When timeout complete, send entered text to search API
-        console.log(records);
+        const queriedCollections = await queryCollectionsFromSearchText(event.target.value); // When timeout complete, send entered text to search API
+        const queriedCards = await queryCollectionsFromSearchText(event.target.value);
+        console.log(queriedCollections);
+        console.log(queriedCards);
       }, searchTimerWaitTime); // Wait time designated in global searchTimerWaitTime before running function
     }
   }
