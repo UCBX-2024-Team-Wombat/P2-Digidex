@@ -75,7 +75,21 @@ document.body.addEventListener("keydown", (event) => {
   // Handle search text completion
   if (event.target.id == "search-text-input") {
     // Set keys to not consider in keydown for search text
-    const keysToIgnore = ["Escape", "Enter"];
+    const keysToIgnore = [
+      "Escape",
+      "Enter",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowUp",
+      "ArrowRight",
+      "Alt",
+      "Tab",
+      "CapsLock",
+      "Shift",
+      "Control",
+      "Meta",
+      "NumLock",
+    ];
 
     if (keysToIgnore.includes(event.key) == false) {
       clearTimeout(searchTimer); // Clear any existing timeouts from prior keydowns
@@ -109,10 +123,3 @@ document.addEventListener("hidden.bs.modal", () => {
 
 // Functions
 // ===============================
-
-// Queries passed string data to Card and Collection endpoints
-function querySearchText(value) {
-  typedValues = value.split(" ");
-  console.log(typedValues);
-  // Next: Send search text payload to api for query
-}
