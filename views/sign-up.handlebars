@@ -1,27 +1,33 @@
 {{!Sign up page design}}
 
+
 {{!Create header for sign up page}}
 <h1>Sign Up</h1>
 {{!Add text box to accept value for Email}}
 <div class="Sign-up">
-    <textarea class="sign-up-input" id="Sign-up-Email" placeholder="Email:"></textarea>
+    <label for="Sign-up-Email" class="form-label">Email:</label>
+    <input type="email" class="form-control" id="Sign-up-Email" placeholder="Email:"></input>
 </div>
 {{!Add text box to accept value for Username}}
 <div class="Sign-up">
-    <textarea class="sign-up-input" id="Sign-up-Username" placeholder="Username:"></textarea>
+    <label for="Sign-up-Username" class="form-label">Username:</label>
+    <input type="username" class="form-control" id="Sign-up-Email" placeholder="Username:"></input>
 </div>
-
 {{!Add text box to accept a value for password}}
 <div class="Sign-up">
-    <textarea class="sign-up-input" id="Sign-up-Password" placeholder="Password:"></textarea>
+    <label for="Sign-up-Password" class="form-label">Password:</label>
+    <input type="password" class="form-control" id="Sign-up-Password" placeholder="Password:"></input>
 </div>
-
 {{!Add text box to accept a value for the reentered password}}
 <div class="Sign-up">
-    <textarea class="sign-up-input" id="Sign-up-RePass" placeholder="Re-enter Password:"></textarea>
+    <label for="Sign-up-RePass" class="form-label">Re-Enter Password:</label>
+    <input type="password" class="form-control" id="Sign-up-RePass" placeholder="Re-Enter Password:"></input>
 </div>
-
 {{!Add button for submission}}
 <div class="Sign-up">
     <button id="Sign-up-Submit" type="submit">Sign Up</button>
 </div>
+
+<script src="/js/sign-up-handler.js"></script>
+    
+
