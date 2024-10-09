@@ -94,9 +94,10 @@ document.body.addEventListener("keydown", (event) => {
     if (keysToIgnore.includes(event.key) == false) {
       clearTimeout(searchTimer); // Clear any existing timeouts from prior keydowns
 
-      searchTimer = setTimeout(() => {
+      searchTimer = setTimeout(async () => {
         // Set global searchTimer to timeout from setTimeout()
-        querySearchText(event.target.value); // When timeout complete, send entered text to search API
+        const records = await querySearchText(event.target.value); // When timeout complete, send entered text to search API
+        console.log(records);
       }, searchTimerWaitTime); // Wait time designated in global searchTimerWaitTime before running function
     }
   }
