@@ -20,30 +20,17 @@
         <section class="col-2">
           {{! Navigation Bar }}
           <ul class="nav flex-column">
+            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
             <li class="nav-item"><a
                 href="#"
                 class="nav-link"
-                data-nav-id=""
-              >Home</a></li>
-            <li class="nav-item"><a
-                href="#"
-                class="nav-link"
-                data-nav-id="nav-search"
+                data-is-modal="yes"
+                id="nav-search"
               >Search</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-nav-id="">New
-                Collection</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-nav-id="">New
-                Card</a></li>
-            <li class="nav-item"><a
-                href="#"
-                class="nav-link"
-                data-nav-id=""
-              >Pinned Cards</a></li>
-            <li class="nav-item"><a
-                href="#"
-                class="nav-link"
-                data-nav-id=""
-              >Tags</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">New Collection</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">New Card</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Pinned Cards</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Tags</a></li>
           </ul>
         </section>
         <section class="col-10">
@@ -62,7 +49,34 @@
                 {{! Floating Account section }}
                 <div>
                   <div class="fs-5" id="my-account-interface">
-                    <a href="#">My Account</a>
+                    <div class="dropdown">
+                      <a
+                        href="#"
+                        class="dropdown-toggle"
+                        id="my-account-dropdown-label"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >My Account</a>
+                      <ul
+                        class="dropdown-menu"
+                        aria-labelledby="my-account-dropdown-label"
+                      >
+                        <li><a
+                            class="dropdown-item"
+                            href="#"
+                          >Placeholder</a></li>
+                        <li><a
+                            class="dropdown-item"
+                            href="#"
+                          >Placeholder</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a
+                            class="dropdown-item"
+                            href="#"
+                            id="account-dropdown-sign-out"
+                          >Sign Out</a></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -88,14 +102,14 @@
               <div class="modal-header">
                 <h5 class="modal-title" id="search-modal-label">
                   <div class="row g-3 align-items-center">
-                      {{!-- Main Label --}}
+                    {{! Main Label }}
                     <div class="col-auto">
                       <label
                         for="search-text-input"
                         class="col-form-label"
                       >Search For:</label>
                     </div>
-                    {{!-- Search Text Input --}}
+                    {{! Search Text Input }}
                     <div class="col-auto">
                       <input
                         type="text"
@@ -106,7 +120,7 @@
                     </div>
                   </div>
                 </h5>
-                {{!-- Close Button (X) --}}
+                {{! Close Button (X) }}
                 <button
                   type="button"
                   class="btn-close"
@@ -114,12 +128,12 @@
                   aria-label="Close"
                 ></button>
               </div>
-              {{!-- Modal Body --}}
+              {{! Modal Body }}
               <div class="modal-body">
                 ...
               </div>
               <div class="modal-footer">
-                {{!-- Close Button (Btn) --}}
+                {{! Close Button (Btn) }}
                 <button
                   type="button"
                   class="btn btn-secondary"
@@ -139,6 +153,7 @@
     ></script>
     {{! Local index script }}
     <script src="/js/modal-handler.js"></script>
+    <script src="/js/logout-handler.js"></script>
     <script src="/js/index.js"></script>
   </body>
 </html>
