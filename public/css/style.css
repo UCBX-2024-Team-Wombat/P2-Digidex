@@ -15,7 +15,16 @@
 }
 
 /* Override standard hyperlink appearance within "My Account" section */
-#my-account-interface > a {
+#my-account-dropdown-label {
     color: black;
     text-decoration: none;
+}
+
+#search-text-input {
+  border: 0px;
+  outline: none;
+}
+
+.welcome-col {
+  max-width: 400px;
 }

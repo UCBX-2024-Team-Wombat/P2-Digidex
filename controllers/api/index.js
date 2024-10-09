@@ -4,8 +4,7 @@ const userRouter = require('./user-routes');
 const collectionRouter = require('./collection-routes');
 
 // Connect imported routers to main router
-router.use('/user/', userRouter);
-router.use('/collection',collectionRouter);
+router.use('/user', userRouter);
 
 // Export main router for use by controllers/index.js
 module.exports = router;
