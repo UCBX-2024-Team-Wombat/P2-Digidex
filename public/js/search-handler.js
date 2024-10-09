@@ -4,6 +4,7 @@ async function querySearchText(value) {
     fullString: value,
     parsedWords: value.split(" "),
   };
+  console.log(searchPayload)
 
   const response = await fetch("/api/collection/search", {
     method: "POST",
@@ -11,5 +12,7 @@ async function querySearchText(value) {
     headers: { "Content-Type": "application/json" },
   });
 
-  return await response.json();
+  const parsedResponse = await response.json();
+
+  return parsedResponse;
 }
