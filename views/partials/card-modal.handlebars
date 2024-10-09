@@ -1,0 +1,45 @@
+<div class="container">
+  <!-- <h2>Modal Button Example</h2> -->
+  <!-- Trigger the modal with a button -->
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="collection-name"><span class="glyphicon glyphicon-user"></span> Collection name</label>
+              <input type="text" class="form-control" id="collection-name" placeholder="Enter collection name">
+            </div>
+            <div class="form-group"></div>
+            <label for="collection-desc"><span class="glyphicon glyphicon-user"></span> Collection description</label>
+            <input type="text" class="form-control" id="collection-desc" placeholder="Enter collection description">
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Tags
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{this.tags}}</a></li>
+          </ul>
+        </div>
+        <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Save
+          Card</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    const cards = {{cards}};
+    const collectionName = document.getElementById ("collection-name");
+    const collectionDesc = document.getElementById ("collection-desc");
+    function editCard(cardIndex) {
+      collectionName.innerText = cards[cardIndex].title;
+      collectionDesc.innerText = cards[cardIndex].description;
+    }
+  })
+</script>

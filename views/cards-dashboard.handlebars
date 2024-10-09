@@ -1,12 +1,39 @@
 <h1>Card Dashboard</h1>
+{{> card-modal}}
 
-<div class="card-collection">
+<div class="container d-flex flex-row gap-2">
+
     {{#each cards}}
-        <div class="card">
-            <h3>{{this.title}}</h3>
-            <p>{{this.description}}</p>
-            <!-- an additional each loop <p>{{this.tags}}</p> -->
-            <!-- for each card, pass in the card tile -->
-        </div>
+    <div class="flex-fill">
+        <h3>{{this.title}}</h3>
+        <p>{{this.description}}</p>
+        <button type="button" class="btn btn-default btn-lg edit-card" id="myBtn" data-id="{{@index}}">Edit</button>
+
+        <!-- an additional each loop <p>{{this.tags}}</p> -->
+        <!-- for each card, pass in the card tile -->
+    </div>
     {{/each}}
 </div>
+
+<script>
+    function editCard(cardIndex) {
+        //const cards = JSON.parse ("{{{ json cards }}}");
+        const cards = {{{ json cards }}};
+        console.log(cards [cardIndex]);
+        const collectionName = document.getElementById("collection-name");
+        const collectionDesc = document.getElementById("collection-desc");
+        collectionName.value = cards[cardIndex].title;
+        collectionDesc.value = cards[cardIndex].description;
+    };
+
+    function openCardModal(index) {
+        editCard(index);
+        const modal = new bootstrap.Modal(document.getElementById("myModal"));
+        modal.show();
+    }
+    document.querySelectorAll(".edit-card").forEach(function (button, index) {
+        button.addEventListener("click", function () {
+            openCardModal(index);
+        })
+    })
+</script>
