@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
-const { Collection, CardToCollection } = require("../../models/index");
+const { Collection } = require("../../models/index");
 
 // Bradyn
 // ================
@@ -17,8 +17,7 @@ router.post("/search", async (req, res) => {
         title: {
           [Op.iLike]: `%${searchPayload.fullString}%`,
         },
-      },
-      include: [{ model: CardToCollection, required: true }],
+      }
     });
 
     if (queryResults) {
