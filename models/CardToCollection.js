@@ -7,6 +7,12 @@ class CardToCollection extends Model { } // do we need any constructor ? discuss
 
 CardToCollection.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true
+        },
         collectionId: {
             type: DataTypes.INTEGER,
             allownull: false,
