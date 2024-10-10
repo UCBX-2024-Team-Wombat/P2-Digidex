@@ -19,6 +19,10 @@ Collection.init(
             type: DataTypes.STRING,
             allownull: false,
         },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {

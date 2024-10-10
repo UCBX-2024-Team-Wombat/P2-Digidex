@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Collection } = require('../../models/index');
+const { Card, CardToCollection } = require('../../models/index');
+const { Op } = require("sequelize");
 
 // Bradyn
-const { Card, CardToCollection } = require('../../models');
 
 router.get('/collection/:id', async (req, res) => {
     try {
@@ -29,7 +29,42 @@ router.get('/collection/:id', async (req, res) => {
 
 
 // Jamil
-// ================
+
+router.post("/search", async (req, res) => {
+  try {
+    const searchPayload = req.body;
+
+    const queryResults = await Collection.findAll({
+      where: {
+        [Op.or]: [
+          {
+            title: {
+              [Op.iLike]: `%${searchPayload.fullString}%`,
+            },
+          },
+          {
+            description: {
+              [Op.iLike]: `%${searchPayload.fullString}%`,
+            },
+          },
+        ],
+      }
+    });
+
+    if (queryResults) {
+      res
+        .status(200)
+        .json(
+          queryResults.map((collection) => collection.get({ plain: true }))
+        );
+    } else {
+      res.status(400);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // Export
 module.exports = router;

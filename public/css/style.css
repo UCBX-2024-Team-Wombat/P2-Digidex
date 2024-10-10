@@ -25,6 +25,10 @@
   outline: none;
 }
 
+.search-tile {
+  text-decoration: none;
+}
+
 .welcome-col {
   max-width: 400px;
 }

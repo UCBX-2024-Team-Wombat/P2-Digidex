@@ -1,11 +1,44 @@
-// name the object property Cards
+const router = require("express").Router();
+const { Op } = require("sequelize");
+const { Card, Collection } = require("../../models/index");
 
-//all cards by user
+router.post("/search", async (req, res) => {
 
-//"find one Card" 
+  try {
+    const searchPayload = req.body;
 
-//create one card
+    const queryResults = await Card.findAll({
+      where: {
+        [Op.or]: [
+          {
+            title: {
+              [Op.iLike]: `%${searchPayload.fullString}%`,
+            },
+          },
+          {
+            description: {
+              [Op.iLike]: `%${searchPayload.fullString}%`,
+            },
+          },
+        ],
+      },
+      include: { model: Collection }
+    });
+    console.log('queryResults')
+    console.log(queryResults)
+    if (queryResults) {
+      res
+        .status(200)
+        .json(
+          queryResults.map((collection) => collection.get({ plain: true }))
+        );
+    } else {
+      res.status(400);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-//update one card
-
-//delete one card
+module.exports = router;
