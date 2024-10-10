@@ -47,6 +47,11 @@ router.post("/search", async (req, res) => {
 //Routo for updating a collection Yasemin
 router.put('/:id', async (req, res) => { // collection/:id, id is the placeholderfor actual collection ID andensure the database responce
     try {
+
+        console.log('req.params.id');
+        console.log(req.params.id);
+        console.log('req.body');
+        console.log(req.body);
         const updatedCollection = await Collection.update( // being sure that code waits for the db update operation completed.
             {
                 //object passed to Collection.update (new value for title and description)
@@ -73,6 +78,7 @@ router.put('/:id', async (req, res) => { // collection/:id, id is the placeholde
             // catch the arror if any hanppens in try block
         } catch (err){
             // 500 respond if any error occure
+            console.log(err);
             res.status(500).json(err);
         }
     
