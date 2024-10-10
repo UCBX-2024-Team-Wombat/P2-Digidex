@@ -20,7 +20,7 @@ Collection.belongsTo(User, {
 // there is many to many relationship between cards and Collection
 Collection.belongsToMany(Card, {
     through: CardToCollection,
-    foreignKey: 'collectionID'
+    foreignKey: 'collectionId'
 });
 
 Card.belongsToMany(Collection,{
