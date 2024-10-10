@@ -18,8 +18,13 @@ document.querySelectorAll('[id^="edit-collection-form"]').forEach(form => {
               headers: { 'Content-Type': 'application/json' },
             });    
 
-
-    }
-)
-}
-)
+            if (response.ok) {
+                location.reload(); // Reload the page to reflect the changes
+              } else {
+                alert('Failed to update collection');
+              }
+            } catch (err) {
+              console.error(err);
+            }
+          });
+        });
