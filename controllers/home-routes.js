@@ -21,11 +21,7 @@ router.get('/collections', async (req, res) => {
 
     const tmp = await Collection.findAll();
 
-    console.log('tmp')
-    console.log('=======================')
-    console.log(tmp);
-    console.log('=======================')
-
+    
     console.log(queriedCollections);
 
     if(queriedCollections){
