@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Card, CardToCollection } = require('../../models/index');
+const { Card, Collection, CardToCollection } = require('../../models/index');
 const { Op } = require("sequelize");
 
 // Bradyn
