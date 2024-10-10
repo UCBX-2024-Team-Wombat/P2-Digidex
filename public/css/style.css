@@ -29,6 +29,11 @@
   text-decoration: none;
 }
 
+.search-tile-body {
+  max-height: 150px;
+  overflow: hidden;
+}
+
 .welcome-col {
   max-width: 400px;
 }
