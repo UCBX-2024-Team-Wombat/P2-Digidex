@@ -1,7 +1,48 @@
-// Yasemin: this part is for collection handlebars edit modal
-const router = require('express').Router(); //import express and create a new Router
-const  { Collection } = require('../../models'); // import Collection model
+const router = require("express").Router();
+const { Op } = require("sequelize");
+const { Collection } = require("../../models/index");
 
+// Bradyn
+// ================
+
+// Jamil
+// ================
+
+router.post("/search", async (req, res) => {
+  try {
+    const searchPayload = req.body;
+
+    const queryResults = await Collection.findAll({
+      where: {
+        [Op.or]: [
+          {
+            title: {
+              [Op.iLike]: `%${searchPayload.fullString}%`,
+            },
+          },
+          {
+            description: {
+              [Op.iLike]: `%${searchPayload.fullString}%`,
+            },
+          },
+        ],
+      }
+    });
+
+    if (queryResults) {
+      res
+        .status(200)
+        .json(
+          queryResults.map((collection) => collection.get({ plain: true }))
+        );
+    } else {
+      res.status(400);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 //Routo for updating a collection
 router.put('/:id', async (req, res) => { // collection/:id, id is the placeholderfor actual collection ID andensure the database responce
     try {
