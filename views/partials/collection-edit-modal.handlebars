@@ -1,0 +1,35 @@
+<div class="modal fade" id="editCollectionModal" tabindex="-1" aria-labelledby="editCollectionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCollectionModalLabel">Edit Collection</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editCollectionForm">
+                    <div class="mb-3">
+                        <label for="collectionTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="collectionTitle" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="collectionDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="collectionDescription" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="collectionColor" class="form-label">Color</label>
+                        <input type="color" class="form-control" id="collectionColor">
+                    </div>
+                    <div class="mb-3">
+                        <label for="collectionTags" class="form-label">Tags</label>
+                        <input type="text" class="form-control" id="collectionTags" placeholder="Comma-separated tags">
+                    </div>
+                    <input type="hidden" id="collectionId" value="">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

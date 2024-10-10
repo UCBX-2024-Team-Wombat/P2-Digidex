@@ -1,34 +1,75 @@
-<section class="container"> 
+
+<div class="container mt-5">
+    <h1 class="collection-title">My Collections</h1>
     <div class="row">
         {{#each collections}}
-            {{> collection-tile}} <!-- Including the collection-tile partial -->
+    
+      {{! --  {{> collection-tile this}}  {{! {{>collection-edit-modal this}}
+        <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" data-collection-id="{{this.id}}" data-collection-field="title">{{this.title}}</h5>
+                        <p class="card-text" data-collection-id="{{this.id}}" data-collection-field="description">{{this.description}}</p>
+                        <div class="tag-container">
+                            {{#each this.tags}}
+                                <span class="badge bg-secondary">{{this}}</span>
+                            {{/each}}
+                        </div>
+                        <button
+                            class="btn btn-primary mt-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editCollectionModal"
+                            data-collection-id="{{this.id}}"
+                        >
+                            <i class="fas fa-edit"></i> EDIT
+                        </button>
+                        <button
+                            class="btn btn-info mt-2"
+                            onclick="openCollection({{this.id}})"
+                        >
+                            Open Collection
+                        </button>
+                    </div>
+                </div>
+            </div>  
         {{/each}}
     </div>
+</div>
 
-    <!-- Edit modal for each collection -->
-    {{#each collections}}
-    <div class="modal fade" id="editModal-{{this.id}}" tabindex="-1" aria-labelledby="editModalLabel-{{this.id}}" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel-{{this.id}}">Edit Collection</h5> 
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="edit-collection-form-{{this.id}}" data-collection-id="{{this.id}}">
-                        <div class="mb-3">
-                            <label for="collection-title-{{this.id}}" class="form-label">Collection Title</label>
-                            <input type="text" class="form-control" id="collection-title-{{this.id}}" value="{{this.title}}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="collection-description-{{this.id}}" class="form-label">Description</label>
-                            <textarea class="form-control" id="collection-description-{{this.id}}" rows="3">{{this.description}}</textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </form>
-                </div>
+<!-- Edit Collection Modal -  -->
+<div class="modal fade" id="editCollectionModal" tabindex="-1" aria-labelledby="editCollectionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCollectionModalLabel">Edit Collection</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editCollectionForm" data-current-collection-id="">
+                    <div class="mb-3">
+                        <label for="collectionTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="collectionTitle" value="Testing" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="collectionDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="collectionDescription" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="collectionColor" class="form-label">Color</label>
+                        <input type="color" class="form-control" id="collectionColor">
+                    </div>
+                    <div class="mb-3">
+                        <label for="collectionTags" class="form-label">Tags</label>
+                        <input type="text" class="form-control" id="collectionTags" placeholder="Comma separated tags">
+                    </div>
+                    <input type="hidden" id="collectionId" value="">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
             </div>
         </div>
     </div>
-    {{/each}}
-</section>
+</div>
+<script src="/js/collection-handler.js" ></script>
