@@ -14,9 +14,18 @@ router.post("/search", async (req, res) => {
 
     const queryResults = await Collection.findAll({
       where: {
-        title: {
-          [Op.iLike]: `%${searchPayload.fullString}%`,
-        },
+        [Op.or]: [
+          {
+            title: {
+              [Op.iLike]: `%${searchPayload.fullString}%`,
+            },
+          },
+          {
+            description: {
+              [Op.iLike]: `%${searchPayload.fullString}%`,
+            },
+          },
+        ],
       }
     });
 
