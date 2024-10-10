@@ -1,12 +1,12 @@
-<h1>Card Dashboard</h1>
+<h1>{{title}}</h1>
 {{> card-modal}}
 
 <div class="container d-flex flex-row gap-2">
 
-    {{#each cards}}
+    {{#each cards as |card|}}
     <div class="flex-fill">
-        <h3>{{this.title}}</h3>
-        <p>{{this.description}}</p>
+        <h3>{{card.title}}</h3>
+        <p>{{card.description}}</p>
         <button type="button" class="btn btn-default btn-lg edit-card" id="myBtn" data-id="{{@index}}">Edit</button>
 
         <!-- an additional each loop <p>{{this.tags}}</p> -->
