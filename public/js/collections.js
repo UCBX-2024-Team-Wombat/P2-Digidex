@@ -11,7 +11,12 @@ document.querySelectorAll('[id^="edit-collection-form"]').forEach(form => {
         const title = document.querySelector(`#collection-title-${collectionId}`).value;
         const description = document.querySelector(`#collection-description-${collectionId}`).value;
 
-        
+        try {
+            const response = await fetch(`/api/collection-routes/:${collectionId}`, {
+              method: 'PUT',
+              body: JSON.stringify({ title, description }),
+              headers: { 'Content-Type': 'application/json' },
+            });    
 
 
     }
