@@ -4,19 +4,12 @@
   <div id="card-id" data-card-id="{{card.id}}" hidden></div>
   {{! Display Card Title }}
   <div>
-    <div class="d-inline-flex">
-      {{! Title }}
-      <h3 class="mb-4">{{card.title}}</h3>
-      {{! Edit button }}
-      <a class="btn" data-card-id="{{card.id}}">
-        <img
-          src="/images/edit-icon.jpg"
-          id="edit-card-button"
-          alt="Edit Icon (Opens card edit modal)"
-          width="15px"
-          height="15px"
-        />
-      </a>
+    {{! Title }}
+    <h3 class="mb-1">{{card.title}}</h3>
+    {{! Edit button }}
+    <div class="mb-3">
+        <p class="btn text-muted px-0" id="edit-card-button" data-card-id="{{card.id}}">[Edit Card]</p>
+        <p class="btn text-muted px-0" id="edit-card-button" data-card-id="{{card.id}}">[Edit Card]</p>
     </div>
     {{! Markdown Display of Card Description }}
     <div>
@@ -34,7 +27,7 @@
     aria-labelledby="search-modal-label"
     aria-hidden="true"
   >
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         {{! Modal Header }}
         <div class="modal-header">
