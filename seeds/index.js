@@ -20,6 +20,7 @@ const seedDatabase = async () => {
   const wombatCollection = await Collection.create({
     title: "Wombat Facts",
     description: "Facts about Wombats",
+    user_id: janeDoe.id
   });
 
   const janeToWombatCollection = await CollectionToUser.create({

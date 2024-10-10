@@ -12,9 +12,13 @@
 
         <!-- Edit button -->
         <button type="button" class="btn btn-primary position-absolute top-0 end-0 m-2"
+            id="edit-modal"
+            data-id={{this.id}}
             data-bs-toggle="modal"
             data-bs-target="#editModal-{{this.id}}">
             Edit
         </button>
     </div>
 </div>
+
+<script src="/js/modal-handler.js"></script>
