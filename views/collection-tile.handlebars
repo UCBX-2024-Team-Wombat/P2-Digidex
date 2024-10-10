@@ -1,0 +1,20 @@
+<div class="col-md-4 mb-4">
+    <div class="card h-100" style="background-color: {{this.color}}; border-radius: {{this.shape}};">
+        <h5 class="card-body position-relative">{{this.title}}</h5> <!-- Title of the collection -->
+        <p class="card-text">{{this.description}}</p> <!-- Description of the collection -->
+
+        <!-- Associated tags -->
+        <div class="tags">
+            {{#each this.tags}}
+            <span class="badge bg-secondary">{{this}}</span>
+            {{/each}}
+        </div>
+
+        <!-- Edit button -->
+        <button type="button" class="btn btn-primary position-absolute top-0 end-0 m-2"
+            data-bs-toggle="modal"
+            data-bs-target="#editModal-{{this.id}}">
+            Edit
+        </button>
+    </div>
+</div>
