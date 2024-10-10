@@ -94,12 +94,18 @@ document.body.addEventListener("keydown", (event) => {
     if (keysToIgnore.includes(event.key) == false) {
       clearTimeout(searchTimer); // Clear any existing timeouts from prior keydowns
 
-      searchTimer = setTimeout(async () => {
-        // Set global searchTimer to timeout from setTimeout()
-        const queriedCollections = await queryCollectionsFromSearchText(event.target.value); // When timeout complete, send entered text to search API
-        const queriedCards = await queryCollectionsFromSearchText(event.target.value);
-        console.log(queriedCollections);
-        console.log(queriedCards);
+      searchTimer = setTimeout(async () => { // Set global searchTimer to timeout from setTimeout()
+        // When timeout complete, send entered text to search API
+        
+        // Send searched text to collection search endpoint
+        const queriedCollections = await queryFromSearchText(event.target.value, "collections");
+        // Populate search page with results 
+        populateSearchResults(queriedCollections, 'collections');
+        
+        // Send searched text to cards endpoint
+        const queriedCards = await queryFromSearchText(event.target.value, "cards");
+        // Populate search page with results 
+        populateSearchResults(queriedCards, 'cards');
       }, searchTimerWaitTime); // Wait time designated in global searchTimerWaitTime before running function
     }
   }
