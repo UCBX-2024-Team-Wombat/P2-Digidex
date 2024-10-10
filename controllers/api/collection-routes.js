@@ -43,7 +43,8 @@ router.post("/search", async (req, res) => {
     res.status(500).json(err);
   }
 });
-//Routo for updating a collection
+//YAsemin
+//Routo for updating a collection Yasemin
 router.put('/:id', async (req, res) => { // collection/:id, id is the placeholderfor actual collection ID andensure the database responce
     try {
         const updatedCollection = await Collection.update( // being sure that code waits for the db update operation completed.
@@ -78,3 +79,4 @@ router.put('/:id', async (req, res) => { // collection/:id, id is the placeholde
 });
 
 module.exports = router
+//==========
