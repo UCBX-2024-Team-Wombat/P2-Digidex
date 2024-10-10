@@ -23,7 +23,7 @@ const seedDatabase = async () => {
     user_id: janeDoe.id
   });
 
-  const janeToWombatCollection = await CollectionToUser.create({
+  await CollectionToUser.create({
     collectionId: wombatCollection.id,
     userId: janeDoe.id,
   });
@@ -75,7 +75,7 @@ Wombats have *extremely dense butts* made of boney plates and thick cartilage. T
     });
   }
 
-  const wombatCollectionToWombatFactCards = await CardToCollection.bulkCreate(
+  await CardToCollection.bulkCreate(
     wombatCollectionToCardData
   );
 
@@ -84,9 +84,10 @@ Wombats have *extremely dense butts* made of boney plates and thick cartilage. T
   const codingCollection = await Collection.create({
     title: "Useful Coding Stuff",
     description: "Links to stuff I keep needing but can't seem to remember 😅",
+    user_id: janeDoe.id
   });
 
-  const janeToCodingCollection = await CollectionToUser.create({
+  await CollectionToUser.create({
     collectionId: codingCollection.id,
     userId: janeDoe.id,
   });
