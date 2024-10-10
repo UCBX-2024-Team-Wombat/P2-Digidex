@@ -44,7 +44,7 @@ router.post("/login", async (req, res) => {
 });
 
 // Sign-Up Endpoint(s)
-router.post('/', async (req, res) => {
+router.post('/sign-up', async (req, res) => {
     try {
         const userData = User.create(req.body);
         req.session.save(() => {
