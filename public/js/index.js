@@ -123,10 +123,22 @@ document.addEventListener("shown.bs.modal", () => {
 // Bootstrap hide-modal event listener
 document.addEventListener("hidden.bs.modal", () => {
   // Clear values from all modal inputs on close modal event
-  const modalInputs = document.querySelectorAll("input");
 
-  for (const input of modalInputs) {
-    input.value = null;
+  if(modalHandler.modalIsOpen("nav-search")){
+    
+    // Reset search input
+    const modalInputs = document.getElementById('search-text-input');
+    modalInputs.value = null;
+
+    // Reset search result columns
+    const searchResultColumns = [
+      document.getElementById('queried-collections'),
+      document.getElementById('queried-cards')
+    ];
+
+    for(const column of searchResultColumns){
+      column.innerHTML = null;
+    }
   }
 });
 
