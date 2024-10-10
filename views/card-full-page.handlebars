@@ -1,27 +1,32 @@
-{{! View Mode }}
-<div id="view-mode">
+{{! Landing }}
+<div>
+  {{! Store Id of card in hidden div for JS use }}
   <div id="card-id" data-card-id="{{card.id}}" hidden></div>
+  {{! Display Card Title }}
   <div>
     <div class="d-inline-flex">
+      {{! Title }}
       <h3 class="mb-4">{{card.title}}</h3>
+      {{! Edit button }}
       <a class="btn" data-card-id="{{card.id}}">
         <img
           src="/images/edit-icon.jpg"
           id="edit-card-button"
+          alt="Edit Icon (Opens card edit modal)"
           width="15px"
           height="15px"
         />
       </a>
     </div>
-    {{! Markdown Display of description }}
+    {{! Markdown Display of Card Description }}
     <div>
       {{{card.markdown_description}}}
     </div>
   </div>
 </div>
-{{! Edit Modal }}
+{{! Card Edit Modal }}
 <div class="container">
-  <!-- Modal -->
+  <!-- Modal Properties -->
   <div
     class="modal fade"
     id="modal-edit-card"
@@ -31,6 +36,7 @@
   >
     <div class="modal-dialog">
       <div class="modal-content">
+        {{! Modal Header }}
         <div class="modal-header">
           <h5 class="modal-title">
             <div class="row g-3 align-items-center">
@@ -64,6 +70,7 @@
           {{! Tabs }}
           <div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
+              {{! Raw Markdown Tab }}
               <li class="nav-item" role="presentation">
                 <button
                   class="nav-link active"
@@ -76,6 +83,7 @@
                   aria-selected="true"
                 >Raw Markdown</button>
               </li>
+              {{! Rendered Markdown Tab }}
               <li class="nav-item" role="presentation">
                 <button
                   class="nav-link"
@@ -89,6 +97,7 @@
                 >Preview</button>
               </li>
             </ul>
+            {{! Raw Markdown Content }}
             <div class="tab-content" id="myTabContent">
               <div
                 class="tab-pane fade show active"
@@ -105,6 +114,7 @@
                   >{{card.description}}</textarea>
                 </div>
               </div>
+              {{! Rendered Markdown Content }}
               <div
                 class="tab-pane fade"
                 id="profile-tab-pane"
@@ -119,6 +129,7 @@
             </div>
           </div>
         </div>
+        {{! Modal Footer }}
         <div class="modal-footer">
           {{! Close Button (Btn) }}
           <button
@@ -126,6 +137,7 @@
             class="btn btn-secondary"
             data-bs-dismiss="modal"
           >Close</button>
+          {{! Save Button }}
           <button
             type="button"
             class="btn btn-primary"
