@@ -20,11 +20,13 @@ function populateSearchResults(data, tableType) {
 
 function createTile(record, tableType) {
   const anchorWrapper = document.createElement("a");
+  const isCard = tableType == 'cards';
+  const isCollection = tableType == 'collections';
   
-  if(tableType == 'cards'){
+  if(isCard){
     anchorWrapper.href = `/card/${record.id}`;
   }
-  else if(tableType == 'collections'){
+  else if(isCollection){
     anchorWrapper.href = `/collection/${record.id}`;
   }
 
@@ -39,14 +41,20 @@ function createTile(record, tableType) {
   cardBody.classList = "card-body";
 
   // Creat card title
-  const cardTitle = document.createElement("div");
+  const cardTitle = document.createElement("h6");
   cardTitle.classList = "card-title";
   cardTitle.innerText = record.title;
 
   // Create card text
   const cardText = document.createElement("div");
-  cardText.classList = "card-text";
-  cardText.innerText = record.description;
+  cardText.classList = "card-text search-tile-body";
+  
+  if(isCard){
+    cardText.innerHTML = record.markdown_description;
+  }
+  else if(isCollection){
+    cardText.innerText = record.description;
+  }
 
   cardBody.appendChild(cardTitle);
   cardBody.appendChild(cardText);
