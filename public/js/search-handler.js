@@ -10,7 +10,7 @@ function populateSearchResults(data, tableType) {
   modalElementToPopulate.innerHTML = null;
 
   const tiles = data.map((record) => {
-    return createTile(record);
+    return createTile(record, tableType);
   });
 
   for (const tile of tiles) {
@@ -18,12 +18,21 @@ function populateSearchResults(data, tableType) {
   }
 }
 
-function createTile(record) {
+function createTile(record, tableType) {
   const anchorWrapper = document.createElement("a");
+  
+  if(tableType == 'cards'){
+    anchorWrapper.href = `/card/${record.id}`;
+  }
+  else if(tableType == 'collections'){
+    anchorWrapper.href = `/collection/${record.id}`;
+  }
+
+  anchorWrapper.classList = 'search-tile';
 
   // Create Card wrapper div
   const cardWrapperDiv = document.createElement("div");
-  cardWrapperDiv.classList = "card mb-3 search-tile";
+  cardWrapperDiv.classList = "card mb-3";
 
   // Create card body (holds title and text)
   const cardBody = document.createElement("div");
