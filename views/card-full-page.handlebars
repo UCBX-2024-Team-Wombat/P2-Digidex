@@ -1,0 +1,140 @@
+{{! View Mode }}
+<div id="view-mode">
+  <div id="card-id" data-card-id="{{card.id}}" hidden></div>
+  <div>
+    <div class="d-inline-flex">
+      <h3 class="mb-4">{{card.title}}</h3>
+      <a class="btn" data-card-id="{{card.id}}">
+        <img
+          src="/images/edit-icon.jpg"
+          id="edit-card-button"
+          width="15px"
+          height="15px"
+        />
+      </a>
+    </div>
+    {{! Markdown Display of description }}
+    <div>
+      {{{card.markdown_description}}}
+    </div>
+  </div>
+</div>
+{{! Edit Modal }}
+<div class="container">
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="modal-edit-card"
+    tabindex="-1"
+    aria-labelledby="search-modal-label"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <div class="row g-3 align-items-center">
+              {{! Main Label }}
+              <div class="col-auto">
+                <label
+                  for="modal-edit-card-title"
+                  class="col-form-label"
+                >Title:</label>
+              </div>
+              {{! Search Text Input }}
+              <div class="col-auto">
+                <input
+                  class="form-control"
+                  id="modal-edit-card-title"
+                  value="{{card.title}}"
+                />
+              </div>
+            </div>
+          </h5>
+          {{! Close Button (X) }}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        {{! Modal Body }}
+        <div class="modal-body" id="edit-modal-body">
+          {{! Tabs }}
+          <div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#home-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="home-tab-pane"
+                  aria-selected="true"
+                >Raw Markdown</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="profile-tab-pane"
+                  aria-selected="false"
+                >Preview</button>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div
+                class="tab-pane fade show active"
+                id="home-tab-pane"
+                role="tabpanel"
+                aria-labelledby="home-tab"
+                tabindex="0"
+              >
+                <div class="mt-2">
+                  <textarea
+                    class="form-control"
+                    id="modal-edit-card-description"
+                    rows="10"
+                  >{{card.description}}</textarea>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="profile-tab-pane"
+                role="tabpanel"
+                aria-labelledby="profile-tab"
+                tabindex="0"
+              >
+                <div class="mt-2">
+                  {{{card.markdown_description}}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          {{! Close Button (Btn) }}
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >Close</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="modal-edit-card-save-changes"
+          >Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/card-handler.js"></script>
