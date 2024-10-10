@@ -37,3 +37,10 @@
 .badge {
   margin: 0 5px 5px 0; 
 }
+.collection-tile {
+  margin: 10px;
+  flex: 1 1 300px; /* Responsive card size */
+}
+
+
+
