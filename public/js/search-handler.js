@@ -59,10 +59,12 @@ async function queryFromSearchText(value, tableType) {
     parsedWords: value.split(" ").map(val => val.trim()),
   };
   
+  // Return empty array if search string is empty
   if(searchPayload.fullString == ""){
     return [];
   }
 
+  // Set API path based on passed tableType
   let apiPath;
   
   if(tableType == 'cards'){
@@ -72,12 +74,14 @@ async function queryFromSearchText(value, tableType) {
     apiPath = "/api/collection/search"
   }
 
+  // Make callout
   const response = await fetch(apiPath, {
     method: "POST",
     body: JSON.stringify(searchPayload),
     headers: { "Content-Type": "application/json" },
   });
 
+  // Load response body and return
   const parsedResponse = await response.json();
 
   return parsedResponse;
