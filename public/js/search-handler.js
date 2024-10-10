@@ -55,8 +55,8 @@ function createTile(record) {
 // Queries passed string data to Cards / Collection endpoints
 async function queryFromSearchText(value, tableType) {
   const searchPayload = {
-    fullString: value,
-    parsedWords: value.split(" "),
+    fullString: value.trim(),
+    parsedWords: value.split(" ").map(val => val.trim()),
   };
   
   if(searchPayload.fullString == ""){
