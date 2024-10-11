@@ -81,4 +81,8 @@ router.get('/collection/:id', async (req, res) => {
   }
 })
 
+
+router.get('/sign-up', (req,res) => {
+  res.render('sign-up',{ layout: 'visitor-shell'});
+})
 module.exports = router;
