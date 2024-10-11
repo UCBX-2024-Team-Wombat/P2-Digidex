@@ -23,8 +23,6 @@ class ModalHandler {
       description: document.getElementById(`modal-input-new-${tableName}-description`).value
     }
 
-    const cardToCollectionData = {}
-
     if(tableName == 'collection'){
       const response = await fetch('/api/collection/new', {
         method: "POST",
@@ -42,6 +40,44 @@ class ModalHandler {
 
     if(tableName == 'card'){
       // newRecordData.
+
+      const newCardResponse = await fetch('/api/card/new', {
+        method: "POST",
+        body: JSON.stringify(newRecordData),
+        headers: { "Content-Type": "application/json" }
+      })
+
+      if(newCardResponse.ok){
+        const parsedResponse = await newCardResponse.json();
+        console.log('==========PARSED CARD RESPONSE============')
+        console.log(parsedResponse);
+        
+        console.log('======================')
+        const cardToCollectionData = {
+          collectionId: document.getElementById('available-collections-selector').value,
+          cardId: parsedResponse.id
+        }
+
+        console.log('=======CARD TO COLLECTION DATA=======')
+        console.log(cardToCollectionData)
+        console.log('==============')
+
+        const newJunctionResponse = await fetch('/api/card-to-collection/new', {
+          method: "POST",
+          body: JSON.stringify(cardToCollectionData),
+          headers: { "Content-Type": "application/json" }
+        })
+
+        if(newJunctionResponse.ok){
+          location.reload();
+        }
+        else {
+          console.log('junction error');
+        }
+      }
+      else {
+        alert('error!');
+      }
     }
 
   }
