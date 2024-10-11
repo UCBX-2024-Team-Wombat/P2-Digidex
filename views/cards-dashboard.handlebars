@@ -1,10 +1,11 @@
 <h1>{{title}}</h1>
 {{> card-modal}}
 
-<div class="container d-flex flex-row gap-2">
+<div class="container">
+<div class= "d-flex row gap-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
 
     {{#each cards as |card|}}
-    <div class="card flex-fill p-3 text-center" style="width: 15rem; overflow: hidden;">
+    <div class="card flex-md-fill p-3 text-center" style="width: 100%; max-width: 15rem; overflow: hidden; ">
         <h3>{{card.title}}</h3>
         <p class="card-body" style="object-fit: cover;">{{{card.description}}}</p>
         <button type="button" class="btn btn-primary font-size: 10px edit-card" id="myBtn" data-id="{{@index}}">Edit
@@ -15,6 +16,7 @@
         <!-- for each card, pass in the card tile -->
     </div>
     {{/each}}
+</div>
 </div>
 
 
