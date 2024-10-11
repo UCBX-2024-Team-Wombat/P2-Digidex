@@ -7,6 +7,15 @@ const searchTimerWaitTime = 500;
 // Listeners
 // ===============================
 
+document.addEventListener("DOMContentLoaded", async () => {
+  const usersCollections = await fetch("/api/collection/user-collections", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  populateCollectionsSelect(await usersCollections.json());
+});
+
 // Click listener
 document.body.addEventListener("click", async (event) => {
   const target = event.target;
@@ -18,13 +27,11 @@ document.body.addEventListener("click", async (event) => {
     modalHandler.openModal(targetId);
   }
 
-  if(targetId == 'modal-new-collection-save'){
-
-    modalHandler.getModalInputsAndFetch()    
-
-  }
-  else if(targetId == 'modal-new-card-save'){
-
+  if (
+    targetId == "modal-new-collection-save" ||
+    targetId == "modal-new-card-save"
+  ) {
+    modalHandler.getModalInputsAndFetch();
   }
 
   // Handle logout when logout clicked
@@ -50,19 +57,15 @@ document.addEventListener("shown.bs.modal", () => {
 // Bootstrap hide-modal event listener
 document.addEventListener("hidden.bs.modal", () => {
   // Clear values from all modal inputs on close modal event
-
   // if(modalHandler.modalIsOpen("nav-search")){
-    
   //   // Reset search input
   //   const modalInputs = document.getElementById('search-text-input');
   //   modalInputs.value = null;
-
   //   // Reset search result columns
   //   const searchResultColumns = [
   //     document.getElementById('queried-collections'),
   //     document.getElementById('queried-cards')
   //   ];
-
   //   for(const column of searchResultColumns){
   //     column.innerHTML = null;
   //   }
@@ -71,3 +74,17 @@ document.addEventListener("hidden.bs.modal", () => {
 
 // Functions
 // ===============================
+
+function populateCollectionsSelect(collections) {
+  const selectElement = document.getElementById(
+    "available-collections-selector"
+  );
+
+  for (const collection of collections) {
+    const option = document.createElement("option");
+    option.value = collection.id;
+    option.innerText = collection.title;
+
+    selectElement.appendChild(option);
+  }
+}
