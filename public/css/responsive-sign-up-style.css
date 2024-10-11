@@ -2,7 +2,7 @@
 
 /*base styles */
 /*Enhanced card responsiveness by setting width to 100% and max-width to 50rem. 
-Adjusted email and password input fields to span full width with padding for improved usability. We can change it if we want */
+Adjusted email and password input fields to span full width with padding for improved usability. We can change it if we want 
 .card {
     width: 100%;
     max-width: 50rem;
@@ -11,7 +11,7 @@ Adjusted email and password input fields to span full width with padding for imp
 input[type="email"], input[type="passwprd"] {
     width: 100%;
     padding: 1rem;
-}
+}*/
 /* Tablet Specific part*/
 /*Added responsive styles for mobile devices (max-width 768px).*/
 
