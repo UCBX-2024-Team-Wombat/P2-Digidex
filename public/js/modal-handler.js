@@ -1,11 +1,15 @@
 class ModalHandler {
 
   openModals = {
-    'modal-search': false
+    'modal-search': false,
+    'modal-new-collection': false,
+    'modal-new-card': false
   }
 
   navIdToModalIdMap = {
-    'nav-search': 'modal-search'
+    'nav-search': 'modal-search',
+    'nav-new-collection': 'modal-new-collection',
+    'nav-new-card': 'modal-new-card'
   }
 
   modalIsOpen(navId){    
