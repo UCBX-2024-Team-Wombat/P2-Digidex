@@ -10,16 +10,18 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive-main-style.css" />
   </head>
   <body>
     {{! Central container for site }}
-    <div class="container mt-5">
+    <div class="container justify-content-center" id="main-container">
       {{! Central row for site }}
-      <div class="row justify-content-start">
+      <div class="row justify-content-start flex-column flex-lg-row" id="main-row">
         {{! Navigation Column }}
-        <section class="col-2">
+        <section class="col-auto col-lg-2" id="navigation-column">
           {{! Navigation Bar }}
-          <ul class="nav flex-column">
+          <nav>
+          <ul class="nav sticky-top flex-lg-column justify-content-center text-primary" id="primary-nav-list">
             {{! Route to Home page }}
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             {{! Open Search Modal }}
@@ -63,16 +65,17 @@
               </ul>
             </li>
           </ul>
+          </nav>
         </section>
-        <section class="col-10">
-          <div class="container">
+        <section class="col-lg-9 col-md-auto">
+          <div class="container" id="content-body">
             <div class="row justify-content-start">
               {{! Column for vertical divider }}
-              <div class="col-1 d-flex nav-divider">
-                <div class="vr"></div>
+              <div class="col-1 nav-divider d-none d-lg-flex">
+                <div class="vr" id="horizontal-divider"></div>
               </div>
               {{! Column for body }}
-              <div class="col-11" style="position: relative;">
+              <div class="col-sm-auto col-lg-11" style="position: relative;">
                 {{! Main handlebars body }}
                 <div>
                   {{{body}}}
