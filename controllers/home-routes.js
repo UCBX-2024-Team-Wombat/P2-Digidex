@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Card, Collection } = require("../models/index");
+const { Card, Collection } = require("../models/index");
 const withAuth = require("../utils/auth");
 const { where } = require('sequelize');
 
@@ -31,21 +31,30 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-router.get('/card/:id', async (req, res) => {
+router.get("/card/:id", async (req, res) => {
   try {
     const card = await Card.findOne({
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
+      include: { model: Collection },
     });
 
-    if(!card){
+    if (!card) {
       res.status(404);
     }
 
-    res.render('card-full-page', {card: card.get({ plain: true})});
-  }
-  catch (err){
+    const formattedCard = {
+      id: card.id,
+      title: card.title,
+      description: card.description,
+      markdown_description: card.markdown_description,
+      collectionId: card.collections[0].id,
+      collectionTitle: card.collections[0].title,
+    };
+
+    res.render("card-full-page", { card: formattedCard });
+  } catch (err) {
     console.log(err);
     res.status(500);
   }
@@ -82,7 +91,7 @@ router.get('/collection/:id', async (req, res) => {
 })
 
 
-router.get('/sign-up', (req,res) => {
-  res.render('sign-up',{ layout: 'visitor-shell'});
-})
+router.get("/sign-up", (req, res) => {
+  res.render("sign-up", { layout: "visitor-shell" });
+});
 module.exports = router;
