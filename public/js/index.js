@@ -7,6 +7,7 @@ const searchTimerWaitTime = 500;
 // Listeners
 // ===============================
 
+// Page Load Listener
 document.addEventListener("DOMContentLoaded", async () => {
   const usersCollections = await fetch("/api/collection/user-collections", {
     method: "GET",
