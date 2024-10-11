@@ -12,6 +12,32 @@ input[type="email"], input[type="passwprd"] {
     width: 100%;
     padding: 1rem;
 }
+/* Tablet Specific part*/
+/*Added responsive styles for mobile devices (max-width 768px).*/
 
+
+@media (max-with: 768px) {
+    .card {
+        width: 90%;
+        margin: auto;
+    }
+    h1.card-header {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .form-control {
+        width: 80%;
+        padding: 1rem; /* i choose rem if you all want we can change it to px */
+    
+    }
+    .col-form-label {
+        text-align: center;
+        padding: 0.5rem;
+
+    }
+
+
+}
 
 /* ======= YAsemin End ========*/
