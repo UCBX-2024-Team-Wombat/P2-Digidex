@@ -2,6 +2,28 @@ const router = require("express").Router();
 const { Op } = require("sequelize");
 const { Collection } = require("../../models/index");
 
+
+router.get('/user-collections', async (req, res) => {
+
+  try {
+    const collections = await Collection.findAll({
+      where: {
+        user_id: req.session.user_id
+      }
+    });
+
+    if(collections){
+      res.status(200).json(collections.map(collection => collection.get({plain: true})))
+    }
+    else {
+      res.status(400).send();
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+  }
+})
+
 // Query Collections matching passed query string
 router.post("/search", async (req, res) => {
   try {
