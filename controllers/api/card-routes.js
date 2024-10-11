@@ -2,6 +2,22 @@ const router = require("express").Router();
 const { Op } = require("sequelize");
 const { Card, Collection } = require("../../models/index");
 
+router.post('/new', async (req, res) => {
+  try {
+    const newCard = await Card.create(req.body, {individualHooks: true});
+
+    if(newCard.id){
+      res.status(201).json(newCard.get({plain: true}));
+    }
+    else {
+      res.status(400).send();
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+  }
+})
+
 router.post("/update/:id", async (req, res) => {
   try {
     const updateResults = await Card.update(req.body, {
