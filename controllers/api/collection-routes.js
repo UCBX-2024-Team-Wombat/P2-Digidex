@@ -2,10 +2,6 @@ const router = require("express").Router();
 const { Op } = require("sequelize");
 const { Collection } = require("../../models/index");
 
-// Bradyn
-// ================
-
-// ================
 // Query Collections matching passed query string
 router.post("/search", async (req, res) => {
   try {
@@ -46,6 +42,34 @@ router.post("/search", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// Create new Collection
+router.post('/new', async (req, res) => {  
+  try {
+    // Add user Id to payload
+    const newCardPayload = {
+      title: req.body.title,
+      description: req.body.description,
+      user_id: req.session.user_id
+    }
+
+    // Create new Collection
+    const newCollection = await Collection.create(newCardPayload);
+    
+    // If successful, return success status
+    if(newCollection.id){
+      res.status(201).send();
+    }
+    // Otherwise return error
+    else {
+      res.status(400).send();
+    }
+  }
+  catch (err){
+    console.log(err);
+    res.status(500).send();
+  }
+})
 
 // Update Collection with passed data
 router.put("/:id", async (req, res) => {
