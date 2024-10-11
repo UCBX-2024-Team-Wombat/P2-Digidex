@@ -6,11 +6,12 @@
   <div>
     {{! Title }}
     <h3 class="mb-1">{{card.title}}</h3>
-    <div>In<span class="ps-1"><a href="/collection/{{card.collectionId}}">{{card.collectionTitle}}</a></span></div>
+    <div>Stored In<span class="ps-1"><a href="/collection/{{card.collectionId}}">{{card.collectionTitle}}</a></span></div>
     {{! Edit button }}
-    <div class="mb-3">
-        <p class="btn text-muted px-0" id="edit-card-button" data-card-id="{{card.id}}">[Edit Card]</p>
+    <div>
+        <p class="btn text-muted px-0 mb-0" id="edit-card-button" data-card-id="{{card.id}}">[Edit Card]</p>
     </div>
+    <hr class="mt-1 mb-3">
     {{! Markdown Display of Card Description }}
     <div>
       {{{card.markdown_description}}}
@@ -115,7 +116,7 @@
                 aria-labelledby="profile-tab"
                 tabindex="0"
               >
-                <div class="mt-2">
+                <div class="mt-2" id="modal-edit-card-markdown">
                   {{{card.markdown_description}}}
                 </div>
               </div>
