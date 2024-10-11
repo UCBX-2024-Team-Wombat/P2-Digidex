@@ -27,3 +27,18 @@ class ModalHandler {
   }
 
 }
+
+
+/*
+console.log("Connected ...");
+const handler = new ModalHandler();
+
+const modalBtn = document.getElementById('edit-modal');
+modalBtn.addEventListener('click', function(event) {
+  console.log("This: ", this);
+  console.log("data: ", this.dataset);
+  let selectedId = this.dataset.id;
+  handler.openModal(selectedId);
+});
+
+*/

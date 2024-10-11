@@ -20,17 +20,19 @@
         <section class="col-2">
           {{! Navigation Bar }}
           <ul class="nav flex-column">
-            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-            <li class="nav-item"><a
-                href="#"
+            {{! Route to Home page }}
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            {{! Open Search Modal }}
+            <li class="nav-item"><button
                 class="nav-link"
                 data-is-modal="yes"
                 id="nav-search"
-              >Search</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">New Collection</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">New Card</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Pinned Cards</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Tags</a></li>
+              >Search</button></li>
+            {{! Open New Collection Modal }}
+            <li class="nav-item"><button href="#" class="nav-link">New
+                Collection</button></li>
+            {{! Open New Card Modal }}
+            <li class="nav-item"><button href="#" class="nav-link">New Card</button></li>
           </ul>
         </section>
         <section class="col-10">
@@ -132,11 +134,14 @@
               <div class="modal-body">
                 <div class="container">
                   <div class="row">
-                    <div class="col" id="queried-collections">
-
+                    <div class="col">
+                      <h4 id="queried-collections-header">Collections</h4>
+                      <div id="queried-collections">
+                      </div>
                     </div>
-                    <div class="col" id="queried-cards">
-
+                    <div class="col">
+                      <h4 id="queried-cards-header">Cards</h4>
+                      <div id="queried-cards"></div>
                     </div>
                   </div>
                 </div>

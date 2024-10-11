@@ -98,11 +98,13 @@ document.body.addEventListener("keydown", (event) => {
         
         // Send searched text to collection search endpoint
         const queriedCollections = await queryFromSearchText(event.target.value, "collections");
+        document.getElementById('queried-collections-header').innerText = `Collections (${queriedCollections.length})`
         // Populate search page with results 
         populateSearchResults(queriedCollections, 'collections');
         
         // Send searched text to cards endpoint
         const queriedCards = await queryFromSearchText(event.target.value, "cards");
+        document.getElementById('queried-cards-header').innerText = `Cards (${queriedCards.length})`
         // Populate search page with results 
         populateSearchResults(queriedCards, 'cards');
       }, searchTimerWaitTime); // Wait time designated in global searchTimerWaitTime before running function
@@ -122,11 +124,23 @@ document.addEventListener("shown.bs.modal", () => {
 // Bootstrap hide-modal event listener
 document.addEventListener("hidden.bs.modal", () => {
   // Clear values from all modal inputs on close modal event
-  const modalInputs = document.querySelectorAll("input");
 
-  for (const input of modalInputs) {
-    input.value = null;
-  }
+  // if(modalHandler.modalIsOpen("nav-search")){
+    
+  //   // Reset search input
+  //   const modalInputs = document.getElementById('search-text-input');
+  //   modalInputs.value = null;
+
+  //   // Reset search result columns
+  //   const searchResultColumns = [
+  //     document.getElementById('queried-collections'),
+  //     document.getElementById('queried-cards')
+  //   ];
+
+  //   for(const column of searchResultColumns){
+  //     column.innerHTML = null;
+  //   }
+  // }
 });
 
 // Functions
