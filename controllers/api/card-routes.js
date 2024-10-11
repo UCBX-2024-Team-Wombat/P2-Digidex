@@ -2,8 +2,30 @@ const router = require("express").Router();
 const { Op } = require("sequelize");
 const { Card, Collection } = require("../../models/index");
 
-router.post("/search", async (req, res) => {
+router.post("/update/:id", async (req, res) => {
+  try {
+    const updateResults = await Card.update(req.body, {
+      where: {
+        id: req.body.id,
+      },
+      individualHooks: true
+    });
 
+    if(updateResults[0] == 1){
+      res.status(201).send();
+    }
+    else {
+      res.status(400).send();
+    }
+
+  } catch (error) {
+    console.log('error');
+    console.log(error);
+    res.status(500).send();
+  }
+});
+
+router.post("/search", async (req, res) => {
   try {
     const searchPayload = req.body;
 
@@ -22,10 +44,9 @@ router.post("/search", async (req, res) => {
           },
         ],
       },
-      include: { model: Collection }
+      include: { model: Collection },
     });
-    console.log('queryResults')
-    console.log(queryResults)
+    
     if (queryResults) {
       res
         .status(200)
