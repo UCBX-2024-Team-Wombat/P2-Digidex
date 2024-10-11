@@ -1,28 +1,28 @@
 {{!Sign up page design}}
 
-
-{{!Create header for sign up page}}
-<h1>Sign Up</h1>
-{{!Add text box to accept value for Email}}
-<div class="Sign-up">
-    <label for="Sign-up-Email" class="form-label">Email:</label>
-    <input type="email" class="form-control" id="Sign-up-Email" placeholder="Email:"></input>
+<div class="card text-black bg-lightmb-3 ">
+    {{!Create header for sign up page}}
+    <h1 class="card-header bg-black text-white row mb-3 d-flex justify-content-center">Sign Up</h1>
+    {{!Add text box to accept value for Email}}
+    <div class="row mb-3 d-flex justify-content-center">
+        <label for="Sign-up-Email" class="col-sm-2 col-form-label p-3">Email:</label>
+        <input type="email" class="form-control w-50 p-3" id="Sign-up-Email" placeholder="Email"></input>
+    </div>
+    {{!Add text box to accept a value for password}}
+    <div class="row mb-3 d-flex justify-content-center">
+        <label for="Sign-up-Password" class="col-sm-2 col-form-label p-3">Password:</label>
+        <input type="password" class="form-control w-50 p-3" id="Sign-up-Password" placeholder="Password"></input>
+    </div>
+    {{!Add text box to accept a value for the reentered password}}
+    <div class="row mb-3 d-flex justify-content-center">
+        <label for="Sign-up-RePass" class="col-sm-2 col-form-label p-3">Re-Enter Password:</label>
+        <input type="password" class="form-control w-50 p-3" id="Sign-up-RePass" placeholder="Re-Enter Password"></input>
+    </div>
+    {{!Add button for submission}}
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary" id="Sign-up-Submit" type="submit">Sign Up</button>
+    </div>
 </div>
-{{!Add text box to accept a value for password}}
-<div class="Sign-up">
-    <label for="Sign-up-Password" class="form-label">Password:</label>
-    <input type="password" class="form-control" id="Sign-up-Password" placeholder="Password:"></input>
-</div>
-{{!Add text box to accept a value for the reentered password}}
-<div class="Sign-up">
-    <label for="Sign-up-RePass" class="form-label">Re-Enter Password:</label>
-    <input type="password" class="form-control" id="Sign-up-RePass" placeholder="Re-Enter Password:"></input>
-</div>
-{{!Add button for submission}}
-<div class="Sign-up">
-    <button class="btn btn-primary" id="Sign-up-Submit" type="submit">Sign Up</button>
-</div>
-
 <script src="/js/sign-up-handler.js"></script>
     
 

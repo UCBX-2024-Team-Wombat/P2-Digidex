@@ -25,7 +25,7 @@ const newUser = async function handleNewUserCreation(event) {
 
         //if data is succesfully stored in database then return to homepage
         if (response.ok) {
-            console.log('user sign up successful');
+            window.alert('user sign up successful');
             document.location.replace('/');
 
             //else return to sign up page with instructions to fill out sections within the desired params
