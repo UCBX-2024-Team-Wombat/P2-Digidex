@@ -2,10 +2,11 @@
 <div>
   {{! Store Id of card in hidden div for JS use }}
   <div id="card-id" data-card-id="{{card.id}}" hidden></div>
-  {{! Display Card Title }}
+  {{! Card Display}}
   <div>
     {{! Title }}
     <h3 class="mb-1">{{card.title}}</h3>
+    <div>In<span class="ps-1"><a href="/collection/{{card.collectionId}}">{{card.collectionTitle}}</a></span></div>
     {{! Edit button }}
     <div class="mb-3">
         <p class="btn text-muted px-0" id="edit-card-button" data-card-id="{{card.id}}">[Edit Card]</p>
