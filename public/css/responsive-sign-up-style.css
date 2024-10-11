@@ -1,0 +1,17 @@
+/* YAsemin For Tablet */
+
+/*base styles */
+/*Enhanced card responsiveness by setting width to 100% and max-width to 50rem. 
+Adjusted email and password input fields to span full width with padding for improved usability. We can change it if we want */
+.card {
+    width: 100%;
+    max-width: 50rem;
+}
+
+input[type="email"], input[type="passwprd"] {
+    width: 100%;
+    padding: 1rem;
+}
+
+
+/* ======= YAsemin End ========*/
