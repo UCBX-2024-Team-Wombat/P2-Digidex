@@ -1,6 +1,6 @@
-const withAuth = require("../utils/auth");
-const { User, Collection } = require("../models/index");
 const router = require("express").Router();
+const { User, Card, Collection } = require("../models/index");
+const withAuth = require("../utils/auth");
 
 // Login endpoint (for non-logged-in users)
 router.get("/login", (req, res) => {
@@ -29,5 +29,26 @@ router.get("/", withAuth, async (req, res) => {
     res.status(500);
   }
 });
+
+router.get('/card/:id', async (req, res) => {
+  try {
+    const card = await Card.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
+
+    if(!card){
+      res.status(404);
+    }
+
+    res.render('card-full-page', {card: card.get({ plain: true})});
+  }
+  catch (err){
+    console.log(err);
+    res.status(500);
+  }
+})
+
 
 module.exports = router;
