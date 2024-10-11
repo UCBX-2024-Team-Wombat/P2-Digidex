@@ -29,10 +29,39 @@
                 id="nav-search"
               >Search</button></li>
             {{! Open New Collection Modal }}
-            <li class="nav-item"><button href="#" class="nav-link">New
-                Collection</button></li>
+            <li class="nav-item"><button
+                href="#"
+                class="nav-link"
+                data-is-modal="yes"
+                id="nav-new-collection"
+              >New Collection</button></li>
             {{! Open New Card Modal }}
-            <li class="nav-item"><button href="#" class="nav-link">New Card</button></li>
+            <li class="nav-item"><button
+                href="#"
+                class="nav-link"
+                data-is-modal="yes"
+                id="nav-new-card"
+              >New Card</button></li>
+            {{! My Account Dropdown }}
+            <li class="nav-item dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle nav-link"
+                id="my-account-dropdown-label"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >My Account</a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="my-account-dropdown-label"
+              >
+                <li><a
+                    class="dropdown-item"
+                    href="#"
+                    id="account-dropdown-sign-out"
+                  >Sign Out</a></li>
+              </ul>
+            </li>
           </ul>
         </section>
         <section class="col-10">
@@ -48,39 +77,6 @@
                 <div>
                   {{{body}}}
                 </div>
-                {{! Floating Account section }}
-                <div>
-                  <div class="fs-5" id="my-account-interface">
-                    <div class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle"
-                        id="my-account-dropdown-label"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >My Account</a>
-                      <ul
-                        class="dropdown-menu"
-                        aria-labelledby="my-account-dropdown-label"
-                      >
-                        <li><a
-                            class="dropdown-item"
-                            href="#"
-                          >Placeholder</a></li>
-                        <li><a
-                            class="dropdown-item"
-                            href="#"
-                          >Placeholder</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a
-                            class="dropdown-item"
-                            href="#"
-                            id="account-dropdown-sign-out"
-                          >Sign Out</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -89,6 +85,65 @@
     </div>
     {{! Modals }}
     <div>
+
+{{! New Collection Modal }}
+      <div class="container">
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="modal-new-collection"
+          tabindex="-1"
+          aria-labelledby="search-modal-label"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                {{! Modal Title }}
+                <h5 class="modal-title" id="search-modal-label">
+                  New Collection
+                </h5>
+                {{! Close Button (X) }}
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              {{! Modal Body }}
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="modal-input-new-collection-title" class="form-label">Title</label>
+                    <input class="form-control" id="modal-input-new-collection-title">
+                  </div>
+                  <div class="mb-3">
+                    <label for="modal-input-new-collection-description" class="form-label">Description</label>
+                    <textarea class="form-control" id="modal-input-new-collection-description" rows="3"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                {{! Close Button (Btn) }}
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >Close</button>
+                {{!-- Save Button --}}
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="modal-new-collection-save"
+                >Save New Collection</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
       {{! Search Modal }}
       <div class="container">
         <!-- Modal -->
@@ -169,6 +224,7 @@
     <script src="/js/modal-handler.js"></script>
     <script src="/js/logout-handler.js"></script>
     <script src="/js/search-handler.js"></script>
+    <script src="/js/new-record-handler.js"></script>
     <script src="/js/index.js"></script>
   </body>
 </html>
