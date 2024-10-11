@@ -18,6 +18,15 @@ document.body.addEventListener("click", async (event) => {
     modalHandler.openModal(targetId);
   }
 
+  if(targetId == 'modal-new-collection-save'){
+
+    modalHandler.getModalInputsAndFetch()    
+
+  }
+  else if(targetId == 'modal-new-card-save'){
+
+  }
+
   // Handle logout when logout clicked
   if (targetId == "account-dropdown-sign-out") {
     const logoutResponseCode = await handleLogout();
@@ -32,7 +41,7 @@ document.body.addEventListener("click", async (event) => {
 // Bootstrap show-modal event listener
 document.addEventListener("shown.bs.modal", () => {
   // Focus on text input if modal opened is search modal
-  if (modalHandler.modalIsOpen("nav-search")) {
+  if (modalHandler.currentModal == "nav-search") {
     var searchInput = document.getElementById("search-text-input");
     searchInput.focus();
   }
