@@ -53,6 +53,12 @@
 - https://www.w3schools.com/bootstrap/bootstrap_dropdowns.asp 
 - Card-modal.handlebars: https://getbootstrap.com/docs/5.0/components/card/#titles-text-and-links 
 
+- Remove input border: https://stackoverflow.com/questions/3397113/how-to-remove-focus-border-outline-around-text-input-boxes-chrome
+- Focus on field after bs.show: https://www.tutorialrepublic.com/faq/how-to-set-focus-on-input-field-or-textarea-inside-a-bootstrap-modal.php
+Keydown handling: https://stackoverflow.com/questions/3369593/how-to-detect-escape-key-press 
+- Typing timeout: https://bobbyhadz.com/blog/detect-when-user-stops-typing-in-javascript
+- How to build a markdown blog using node.js, express, and mongodb: https://www.youtube.com/watch?v=1NrHkjlWVhM
+
 ## CodeReferences: 
 
 
