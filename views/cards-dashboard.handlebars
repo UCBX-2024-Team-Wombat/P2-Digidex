@@ -6,28 +6,30 @@
     {{#each cards as |card|}}
     <div class="card flex-fill p-3 text-center" style="width: 15rem; overflow: hidden;">
         <h3>{{card.title}}</h3>
-        <p class="card-body" style="object-fit: cover;">{{{card.markdown_description}}}</p>
-        <button type="button" class="btn btn-primary font-size: 10px edit-card" id="myBtn" data-id="{{@index}}">Edit ✏️</button>
+        <p class="card-body" style="object-fit: cover;">{{{card.description}}}</p>
+        <button type="button" class="btn btn-primary font-size: 10px edit-card" id="myBtn" data-id="{{@index}}">Edit
+            ✏️</button>
         <!--button type="button" class="btn btn-primary font-size: 10px edit-card" id="myBtn" data-id="{{@index}}">Edit ✏️</button-->
 
         <!-- an additional each loop <p>{{this.tags}}</p> -->
         <!-- for each card, pass in the card tile -->
     </div>
-    {{/each}} 
+    {{/each}}
 </div>
 
 
 
 
- <script>
+<script>
     function editCard(cardIndex) {
         //const cards = JSON.parse ("{{{ json cards }}}");
         const cards = {{{ json cards }}};
-        console.log(cards [cardIndex]);
-        const collectionName = document.getElementById("collection-name");
-        const collectionDesc = document.getElementById("collection-desc");
-        collectionName.value = cards[cardIndex].title;
-        collectionDesc.value = cards[cardIndex].description;
+    console.log(cards[cardIndex]);
+    const collectionName = document.getElementById("collection-name");
+    const collectionDesc = document.getElementById("collection-desc");
+    collectionName.value = cards[cardIndex].title;
+    collectionDesc.value = cards[cardIndex].description;
+    document.getElementById("myModal").setAttribute("data-id", cards[cardIndex].id);
     };
 
     function openCardModal(index) {
@@ -41,27 +43,44 @@
         })
     })
 
+    const submitBtn = document.getElementById("save-card");
+        submitBtn.addEventListener("click", async function () {
+            const id = document.getElementById("myModal").getAttribute("data-id");
+            const title = document.getElementById ("collection-name").value;
+            const description = document.getElementById ("collection-desc").value;
+            const response = await fetch(`/api/card/update/${id}`, {
+                method: "POST",
+                body: JSON.stringify({id, title, description}),
+                headers: { "Content-Type": "application/json" },
+            });
+             if(response.ok){
+                //closeCardEditModal();
+                window.location.reload();
+            }
+            else {
+                console.log('something went wrong');
+            }
+        })
 
-document.getElementById('saveButton').addEventListener('click', function() {
-    const updatedInfo = document.getElementById('updatedInfo').value;
-    
-    // Save the updated information (e.g., to localStorage)
-    localStorage.setItem('infoKey', updatedInfo);
-    
-    // Close the modal
-    document.getElementById('updateModal').style.display = 'none';
-    
-    // Optionally refresh the display
-    displayUpdatedInfo();
-  });
 
-  function displayUpdatedInfo() {
-    const info = localStorage.getItem('infoKey');
-    // Update the UI with the new information
-    document.getElementById('infoDisplay').innerText = info;
-  }
+    /*document.getElementById('saveButton').addEventListener('click', function () {
+        const updatedInfo = document.getElementById('updatedInfo').value;
 
+        // Save the updated information (e.g., to localStorage)
+        localStorage.setItem('infoKey', updatedInfo);
 
+        // Close the modal
+        document.getElementById('updateModal').style.display = 'none';
+
+        // Optionally refresh the display
+        displayUpdatedInfo();
+    });
+
+    function displayUpdatedInfo() {
+        const info = localStorage.getItem('infoKey');
+        // Update the UI with the new information
+        document.getElementById('infoDisplay').innerText = info;
+    }*/
 
 
 
