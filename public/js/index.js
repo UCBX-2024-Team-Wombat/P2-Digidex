@@ -30,11 +30,10 @@ document.addEventListener("input", async (event) => {
 
     if(response.ok){
       const parsedResponse = await response.json();
-      console.log(parsedResponse);
       document.getElementById('modal-input-new-card-markdown').innerHTML = parsedResponse;
     }
     else {
-      console.log('error!!!!');
+      console.log('Markdown loading error');
     }
 
 
