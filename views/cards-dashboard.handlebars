@@ -5,9 +5,9 @@
 
     {{#each cards as |card|}}
     <div class="card flex-fill p-3" style="width: 18rem;">
-        <button type="button" class="btn font-size: 10px edit-card" id="myBtn" data-id="{{@index}}">Edit ✏️</button>
         <h3>{{card.title}}</h3>
         <p class="card-body">{{card.description}}</p>
+        <button type="button" class="btn btn-primary font-size: 10px edit-card" id="myBtn" data-id="{{@index}}">Edit ✏️</button>
         <!--button type="button" class="btn btn-primary font-size: 10px edit-card" id="myBtn" data-id="{{@index}}">Edit ✏️</button-->
 
         <!-- an additional each loop <p>{{this.tags}}</p> -->
