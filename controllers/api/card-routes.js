@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
 const { Card, Collection } = require("../../models/index");
+const parseMarkdown = require('../../utils/markdown-handler');
 
 router.post('/new', async (req, res) => {
   try {
@@ -77,5 +78,15 @@ router.post("/search", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.post('/parse-markdown', (req, res) => {
+  try {
+    res.status(200).json(parseMarkdown(req.body.value));
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+  }
+})
+
 
 module.exports = router;
