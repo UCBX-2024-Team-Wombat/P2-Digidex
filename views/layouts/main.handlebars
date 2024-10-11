@@ -184,6 +184,7 @@
               {{! Modal Body }}
               <div class="modal-body">
                 <form>
+                  {{! Card Title }}
                   <div class="mb-3">
                     <label
                       for="modal-input-new-card-title"
@@ -194,16 +195,38 @@
                       id="modal-input-new-card-title"
                     />
                   </div>
+                  {{! Card Collection }}
                   <div class="mb-3">
-                    <label
+                    {{! <label
                       for="modal-input-new-card-title"
                       class="form-label"
                     >Collection</label>
                     <input
                       class="form-control"
                       id="modal-input-new-card-title"
-                    />
+                    /> }}
+                    <div class="dropdown">
+                      <button
+                        class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Dropdown button
+                      </button>
+                      <ul
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1"
+                      >
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else
+                            here</a></li>
+                      </ul>
+                    </div>
                   </div>
+                  {{! Card Description }}
                   <div class="mb-3">
                     <label
                       for="modal-input-new-card-description"
