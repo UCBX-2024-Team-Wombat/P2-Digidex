@@ -17,6 +17,31 @@ document.addEventListener("DOMContentLoaded", async () => {
   populateCollectionsSelect(await usersCollections.json());
 });
 
+// Input Listener
+document.addEventListener("input", async (event) => {
+
+  if(event.target.id == 'modal-input-new-card-description'){
+
+    const response = await fetch('/api/card/parse-markdown', {
+      method: 'POST',
+      body: JSON.stringify({ value: event.target.value}),
+      headers: {'Content-Type': "application/json"}
+    });
+
+    if(response.ok){
+      const parsedResponse = await response.json();
+      console.log(parsedResponse);
+      document.getElementById('modal-input-new-card-markdown').innerHTML = parsedResponse;
+    }
+    else {
+      console.log('error!!!!');
+    }
+
+
+  }
+
+})
+
 // Click listener
 document.body.addEventListener("click", async (event) => {
   const target = event.target;
