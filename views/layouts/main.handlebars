@@ -86,21 +86,21 @@
     {{! Modals }}
     <div>
 
-{{! New Collection Modal }}
+      {{! New Collection Modal }}
       <div class="container">
         <!-- Modal -->
         <div
           class="modal fade"
           id="modal-new-collection"
           tabindex="-1"
-          aria-labelledby="search-modal-label"
+          aria-labelledby="new-collection-modal-label"
           aria-hidden="true"
         >
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 {{! Modal Title }}
-                <h5 class="modal-title" id="search-modal-label">
+                <h5 class="modal-title" id="new-collection-modal-label">
                   New Collection
                 </h5>
                 {{! Close Button (X) }}
@@ -115,12 +115,25 @@
               <div class="modal-body">
                 <form>
                   <div class="mb-3">
-                    <label for="modal-input-new-collection-title" class="form-label">Title</label>
-                    <input class="form-control" id="modal-input-new-collection-title">
+                    <label
+                      for="modal-input-new-collection-title"
+                      class="form-label"
+                    >Title</label>
+                    <input
+                      class="form-control"
+                      id="modal-input-new-collection-title"
+                    />
                   </div>
                   <div class="mb-3">
-                    <label for="modal-input-new-collection-description" class="form-label">Description</label>
-                    <textarea class="form-control" id="modal-input-new-collection-description" rows="3"></textarea>
+                    <label
+                      for="modal-input-new-collection-description"
+                      class="form-label"
+                    >Description</label>
+                    <textarea
+                      class="form-control"
+                      id="modal-input-new-collection-description"
+                      rows="3"
+                    ></textarea>
                   </div>
                 </form>
               </div>
@@ -131,7 +144,7 @@
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
                 >Close</button>
-                {{!-- Save Button --}}
+                {{! Save Button }}
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -142,7 +155,142 @@
           </div>
         </div>
       </div>
-    </div>
+
+      {{! New Card Modal }}
+      <div class="container">
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="modal-new-card"
+          tabindex="-1"
+          aria-labelledby="new-card-modal-label"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                {{! Modal Title }}
+                <h5 class="modal-title" id="new-card-modal-label">
+                  New Card
+                </h5>
+                {{! Close Button (X) }}
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              {{! Modal Body }}
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label
+                      for="modal-input-new-card-title"
+                      class="form-label"
+                    >Title</label>
+                    <input
+                      class="form-control"
+                      id="modal-input-new-card-title"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label
+                      for="modal-input-new-card-title"
+                      class="form-label"
+                    >Collection</label>
+                    <input
+                      class="form-control"
+                      id="modal-input-new-card-title"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label
+                      for="modal-input-new-card-description"
+                      class="form-label"
+                    >Description</label>
+                    {{! Tabs }}
+                    <div>
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        {{! Raw Markdown Tab }}
+                        <li class="nav-item" role="presentation">
+                          <button
+                            class="nav-link active"
+                            id="home-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#home-tab-pane"
+                            type="button"
+                            role="tab"
+                            aria-controls="home-tab-pane"
+                            aria-selected="true"
+                          >Raw Markdown</button>
+                        </li>
+                        {{! Rendered Markdown Tab }}
+                        <li class="nav-item" role="presentation">
+                          <button
+                            class="nav-link"
+                            id="profile-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#profile-tab-pane"
+                            type="button"
+                            role="tab"
+                            aria-controls="profile-tab-pane"
+                            aria-selected="false"
+                          >Preview</button>
+                        </li>
+                      </ul>
+                      {{! Raw Markdown Content }}
+                      <div class="tab-content" id="myTabContent">
+                        <div
+                          class="tab-pane fade show active"
+                          id="home-tab-pane"
+                          role="tabpanel"
+                          aria-labelledby="home-tab"
+                          tabindex="0"
+                        >
+                          <div class="mt-2">
+                            <textarea
+                              class="form-control"
+                              id="modal-input-new-card-description"
+                              rows="10"
+                            >{{card.description}}</textarea>
+                          </div>
+                        </div>
+                        {{! Rendered Markdown Content }}
+                        <div
+                          class="tab-pane fade"
+                          id="profile-tab-pane"
+                          role="tabpanel"
+                          aria-labelledby="profile-tab"
+                          tabindex="0"
+                        >
+                          <div class="mt-2">
+                            {{{card.markdown_description}}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                {{! Close Button (Btn) }}
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >Close</button>
+                {{! Save Button }}
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="modal-new-card-save"
+                >Save New Card</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {{! Search Modal }}
       <div class="container">
@@ -214,6 +362,7 @@
         </div>
       </div>
     </div>
+
     {{! Bootstrap script }}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
