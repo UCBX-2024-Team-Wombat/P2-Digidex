@@ -36,7 +36,7 @@ router.post("/login", async (req, res) => {
       res.status(200).send();
       return;
     });
-  } 
+  }
   // Catch errors if they occur
   catch (err) {
     console.log(err);
@@ -45,10 +45,36 @@ router.post("/login", async (req, res) => {
 });
 
 // Sign-Up Endpoint(s)
+router.post('/sign-up', async (req, res) => {
+  try {
+    console.log(req.body);
+
+    const userData = await User.create(req.body);
+    const user = userData.get({ plain: true })
+    console.log(53, user);
+
+    if (user) {
+      req.session.save(() => {
+        req.session.user_id = user.id;
+        req.session.loggedIn = true;
+        res.status(200).send();
+        return;
+      })
+      
+    } else {
+      res.status(400).send();
+    }
+
+  } catch (err) {
+    console.error(err)
+    res.status(400).json(err);
+  }
+
+});
 
 // Logout Endpoint(s)
 router.post('/logout', async (req, res) => {
-  if(req.session.loggedIn) {
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     })
