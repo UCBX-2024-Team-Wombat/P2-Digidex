@@ -19,12 +19,12 @@ Collection.belongsTo(User, {
 
 // there is many to many relationship between cards and Collection
 Collection.belongsToMany(Card, {
-    through: CardToCollection,
+    through: 'card_to_collection',
     foreignKey: 'collectionId'
 });
 
-Card.belongsToMany(Collection,{
-    through: CardToCollection,
+Card.belongsToMany(Collection, {
+    through: 'card_to_collection',
     foreignKey: 'cardId', //DO NOT FORGET TO CHECK CARDS CLASS AFTER CREATED
 });
 

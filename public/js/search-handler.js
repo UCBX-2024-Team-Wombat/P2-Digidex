@@ -1,3 +1,53 @@
+// Listeners
+// ===============================
+
+// Keydown listener
+document.body.addEventListener("keydown", (event) => {
+  // Handle search text completion
+  if (event.target.id == "search-text-input") {
+    // Set keys to not consider in keydown for search text
+    const keysToIgnore = [
+      "Escape",
+      "Enter",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowUp",
+      "ArrowRight",
+      "Alt",
+      "Tab",
+      "CapsLock",
+      "Shift",
+      "Control",
+      "Meta",
+      "NumLock",
+    ];
+
+    if (keysToIgnore.includes(event.key) == false) {
+      clearTimeout(searchTimer); // Clear any existing timeouts from prior keydowns
+
+      searchTimer = setTimeout(async () => { // Set global searchTimer to timeout from setTimeout()
+        // When timeout complete, send entered text to search API
+        
+        // Send searched text to collection search endpoint
+        const queriedCollections = await queryFromSearchText(event.target.value, "collections");
+        document.getElementById('queried-collections-header').innerText = `Collections (${queriedCollections.length})`
+        // Populate search page with results 
+        populateSearchResults(queriedCollections, 'collections');
+        
+        // Send searched text to cards endpoint
+        const queriedCards = await queryFromSearchText(event.target.value, "cards");
+        document.getElementById('queried-cards-header').innerText = `Cards (${queriedCards.length})`
+        // Populate search page with results 
+        populateSearchResults(queriedCards, 'cards');
+      }, searchTimerWaitTime); // Wait time designated in global searchTimerWaitTime before running function
+    }
+  }
+});
+
+
+// Functions
+// ===============================
+
 function populateSearchResults(data, tableType) {
   let modalElementToPopulate;
 
