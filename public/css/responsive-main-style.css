@@ -66,8 +66,12 @@
     } */
 }
 
-@media (max-width: 350px){
+@media (max-width: 415px){
     nav * {
         font-size: small;
+    }
+
+    #search-body-modal-columns-row {
+        flex-direction: column !important;
     }
 }
