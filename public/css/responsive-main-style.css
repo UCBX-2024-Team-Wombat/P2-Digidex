@@ -44,7 +44,7 @@
   }
 
   #content-body {
-    margin-top: 10vh;
+    margin-top: 8vh;
   }
 
   #primary-nav-element {
@@ -76,9 +76,17 @@
     } */
 }
 
+@media (max-width: 450px) {
+  #content-body {
+    margin-top: 12vh;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 @media (max-width: 415px) {
   nav * {
-    font-size: small;
+    /* font-size: small; */
   }
 
   #search-body-modal-columns-row {

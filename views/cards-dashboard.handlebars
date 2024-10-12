@@ -1,3 +1,4 @@
+    <link rel="stylesheet" href="/css/responsive-cards-dashboard-style.css" />
 <h3 class="mb-1">{{title}}</h3>
 <hr class="mt-1 mb-3">
 
@@ -6,7 +7,7 @@
 <div class="container">
     <div class= "d-flex row gap-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
         {{#each cards as |card|}}
-        <div class="card flex-md-fill p-1" style="width: 100%; max-width: 17rem;">
+        <div class="card flex-md-fill p-1 dashboard-card-tile">
             <div class="card-body">
                 <h3 class="card-title" style="font-size: 1.5em;">{{card.title}}</h3>
                 <div class="overflow-hidden">
