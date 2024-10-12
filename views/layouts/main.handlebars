@@ -20,8 +20,10 @@
         {{! Navigation Column }}
         <section class="col-auto col-lg-2" id="navigation-column">
           {{! Navigation Bar }}
-          <nav>
-          <ul class="nav sticky-top flex-lg-column justify-content-center text-primary" id="primary-nav-list">
+          <nav id="primary-nav-element">
+          <ul class="nav flex-lg-column justify-content-center text-primary" id="primary-nav-list">
+            {{!-- Title --}}
+            <li class="nav-item fw-bold fs-1 text-dark" id="digidex-title">Digidex</li>
             {{! Route to Home page }}
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             {{! Open Search Modal }}

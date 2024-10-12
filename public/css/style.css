@@ -8,6 +8,10 @@
   outline: none;
 }
 
+#primary-nav-list li * {
+  padding-left: 0;
+}
+
 .search-tile {
   text-decoration: none;
 }
