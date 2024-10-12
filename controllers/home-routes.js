@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const { Card, Collection } = require("../models/index");
 const withAuth = require("../utils/auth");
+const { where } = require('sequelize');
 
 // Login endpoint (for non-logged-in users)
 router.get("/login", (req, res) => {
-  res.render("login", { layout: "welcome" });
+  res.render("login", {  layout: "welcome"  });
 });
 
 // Homepage endpoint (for logged in users)
@@ -57,7 +58,31 @@ router.get("/card/:id", async (req, res) => {
     console.log(err);
     res.status(500);
   }
-});
+})
+
+
+//all cards
+//add withAuth when login is working
+router.get('/collection/:id', async (req, res) => {
+  try {
+    const collectionData = await Collection.findByPk(
+      req.params.id,
+      {
+        //get card data associated with collection 
+        include: {
+          model: Card
+        }
+      }
+    ) 
+    const collection = collectionData.get({plain: true});
+  
+    res.render('cards-dashboard', { ...collection });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+})
+
 
 router.get("/sign-up", (req, res) => {
   res.render("sign-up", { layout: "visitor-shell" });

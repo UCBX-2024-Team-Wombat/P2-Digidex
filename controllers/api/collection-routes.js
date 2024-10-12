@@ -1,6 +1,28 @@
-const router = require("express").Router();
+const router = require('express').Router();
+const { Card, Collection, CardToCollection } = require('../../models/index');
 const { Op } = require("sequelize");
-const { Collection } = require("../../models/index");
+
+
+router.get('/collection/:id', async (req, res) => {
+  try {
+    // Query junction between Cards and Collections
+    //using async/await to handle the findAll method 
+    const cardToCollectionJunction = await CardToCollection.findAll({
+      where: { card_id: req.params.collectionId }, 
+      include: [
+          { 
+              model: Card 
+          }
+      ] 
+    });
+
+    // Render card dashboard and pass card data from queried junction record to page for card rendering
+    res.render('dashboard', { cards: cardToCollectionJunction });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
+});
 
 
 router.get('/user-collections', async (req, res) => {
@@ -23,6 +45,7 @@ router.get('/user-collections', async (req, res) => {
     res.status(500).send();
   }
 })
+
 
 // Query Collections matching passed query string
 router.post("/search", async (req, res) => {

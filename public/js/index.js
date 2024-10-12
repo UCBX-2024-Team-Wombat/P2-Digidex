@@ -3,7 +3,6 @@
 const modalHandler = new ModalHandler();
 let searchTimer;
 const searchTimerWaitTime = 500;
-
 // Listeners
 // ===============================
 

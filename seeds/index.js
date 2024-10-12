@@ -28,6 +28,8 @@ const seedDatabase = async () => {
     userId: janeDoe.id,
   });
 
+  const imgWidth = '100%'
+
   const wombatFactCards = await Card.bulkCreate(
     [
       {
@@ -36,7 +38,7 @@ const seedDatabase = async () => {
 Wombat poop is *naturally shaped like cubes*. 
 
 <a href="https://www.bbc.com/news/world-australia-46258616" target="_blank">
-<img src="https://static6.businessinsider.com/image/5bf336ee110d4c09852cc0cc-1190-625/wombats-have-distinctly-cube-shaped-poop-and-scientists-finally-know-how-they-do-it.jpg" alt="wombat cube poop" width="700px"/>
+<img src="https://static6.businessinsider.com/image/5bf336ee110d4c09852cc0cc-1190-625/wombats-have-distinctly-cube-shaped-poop-and-scientists-finally-know-how-they-do-it.jpg" alt="wombat cube poop" width="${imgWidth}"/>
 </a>
         `,
       },
@@ -47,7 +49,7 @@ Wombats freaking **glow in the dark** under ultraviolet light!
 
 <!-- You can write HTML directly for more complicated display functionality -->
 <a href="https://nypost.com/2020/11/27/australian-scientists-discover-wombats-glow-under-uv-light/" target="_blank">
-<img src="https://nypost.com/wp-content/uploads/sites/2/2020/11/wombats-uv-light.jpg?quality=75&strip=all" alt="wombat" width="400px" />
+<img src="https://nypost.com/wp-content/uploads/sites/2/2020/11/wombats-uv-light.jpg?quality=75&strip=all" alt="wombat" width="${imgWidth}" />
 </a>
 `,
       },
@@ -58,7 +60,7 @@ Wombats have *extremely dense butts* made of boney plates and thick cartilage. T
 
 
 <a href="https://www.theguardian.com/science/2020/nov/04/wombats-deadly-bums-how-they-use-their-skull-crushing-rumps-to-fight-play-and-flirt" target="_blank">
-<img src="https://s-media-cache-ak0.pinimg.com/600x315/f3/5e/48/f35e4885760fbaa4496123fde58e22a6.jpg" alt="Wombat being held in human arms"/>
+<img src="https://s-media-cache-ak0.pinimg.com/600x315/f3/5e/48/f35e4885760fbaa4496123fde58e22a6.jpg" alt="Wombat being held in human arms" width = "${imgWidth}"/>
 </a>
 `,
       },

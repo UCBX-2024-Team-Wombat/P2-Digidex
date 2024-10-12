@@ -57,6 +57,12 @@ async function updateCollection(modalData){
       }
 }
 
+//handles where to direct a user when the "open collection" is clicked
+function openCollection(collectionId) {
+  // Navigating to a new page with the collection ID
+  window.location.href = `/collection/${collectionId}`;
+}
+
 // document.querySelectorAll('[id^="edit-collection-form"]').forEach(form => { 
 //     form.addEventListener('submit', async(e) => {
 //         e.preventDefault(); //  prevents the default form submission behavior ( e is a event object)
