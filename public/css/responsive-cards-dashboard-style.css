@@ -1,0 +1,18 @@
+/* Set Max Card Tile width to 1/3 */
+.dashboard-card-tile {
+    max-width: 32%;
+}
+
+/* Set Max Card Tile width to 1/2 */
+@media (max-width: 765px) {
+    .dashboard-card-tile {
+        max-width: 49%;
+    }
+}
+
+/* Set Max Card Tile width to 1/1 */
+@media (max-width: 445px) {
+    .dashboard-card-tile {
+        max-width: 98%;
+    }
+}

@@ -10,16 +10,20 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive-main-style.css" />
   </head>
   <body>
     {{! Central container for site }}
-    <div class="container mt-5">
+    <div class="container justify-content-center" id="main-container">
       {{! Central row for site }}
-      <div class="row justify-content-start">
+      <div class="row justify-content-start flex-column flex-lg-row" id="main-row">
         {{! Navigation Column }}
-        <section class="col-2">
+        <section class="col-auto col-lg-2" id="navigation-column">
           {{! Navigation Bar }}
-          <ul class="nav flex-column">
+          <nav id="primary-nav-element">
+          <ul class="nav flex-lg-column justify-content-center text-primary" id="primary-nav-list">
+            {{!-- Title --}}
+            <li class="nav-item fw-bold fs-1 text-dark" id="digidex-title">Digidex</li>
             {{! Route to Home page }}
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             {{! Open Search Modal }}
@@ -29,57 +33,54 @@
                 id="nav-search"
               >Search</button></li>
             {{! Open New Collection Modal }}
-            <li class="nav-item"><button href="#" class="nav-link">New
-                Collection</button></li>
+            <li class="nav-item"><button
+                href="#"
+                class="nav-link"
+                data-is-modal="yes"
+                id="nav-new-collection"
+              >New Collection</button></li>
             {{! Open New Card Modal }}
-            <li class="nav-item"><button href="#" class="nav-link">New Card</button></li>
+            <li class="nav-item"><button
+                href="#"
+                class="nav-link"
+                data-is-modal="yes"
+                id="nav-new-card"
+              >New Card</button></li>
+            {{! My Account Dropdown }}
+            <li class="nav-item dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle nav-link"
+                id="my-account-dropdown-label"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >My Account</a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="my-account-dropdown-label"
+              >
+                <li><a
+                    class="dropdown-item"
+                    href="#"
+                    id="account-dropdown-sign-out"
+                  >Sign Out</a></li>
+              </ul>
+            </li>
           </ul>
+          </nav>
         </section>
-        <section class="col-10">
-          <div class="container">
+        <section class="col-lg-9 col-md-auto">
+          <div class="container" id="content-body">
             <div class="row justify-content-start">
               {{! Column for vertical divider }}
-              <div class="col-1 d-flex nav-divider">
-                <div class="vr"></div>
+              <div class="col-1 nav-divider d-none d-lg-flex">
+                <div class="vr" id="horizontal-divider"></div>
               </div>
               {{! Column for body }}
-              <div class="col-11" style="position: relative;">
+              <div class="col-sm-auto col-lg-11" style="position: relative;">
                 {{! Main handlebars body }}
-                <div>
+                <div class="overflow-y-scroll" style="max-height: 80vh;">
                   {{{body}}}
-                </div>
-                {{! Floating Account section }}
-                <div>
-                  <div class="fs-5" id="my-account-interface">
-                    <div class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle"
-                        id="my-account-dropdown-label"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >My Account</a>
-                      <ul
-                        class="dropdown-menu"
-                        aria-labelledby="my-account-dropdown-label"
-                      >
-                        <li><a
-                            class="dropdown-item"
-                            href="#"
-                          >Placeholder</a></li>
-                        <li><a
-                            class="dropdown-item"
-                            href="#"
-                          >Placeholder</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a
-                            class="dropdown-item"
-                            href="#"
-                            id="account-dropdown-sign-out"
-                          >Sign Out</a></li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -89,6 +90,220 @@
     </div>
     {{! Modals }}
     <div>
+
+      {{! New Collection Modal }}
+      <div class="container">
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="modal-new-collection"
+          tabindex="-1"
+          aria-labelledby="new-collection-modal-label"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                {{! Modal Title }}
+                <h5 class="modal-title" id="new-collection-modal-label">
+                  New Collection
+                </h5>
+                {{! Close Button (X) }}
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              {{! Modal Body }}
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label
+                      for="modal-input-new-collection-title"
+                      class="form-label"
+                    >Title</label>
+                    <input
+                      class="form-control"
+                      id="modal-input-new-collection-title"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label
+                      for="modal-input-new-collection-description"
+                      class="form-label"
+                    >Description</label>
+                    <textarea
+                      class="form-control"
+                      id="modal-input-new-collection-description"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                {{! Close Button (Btn) }}
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >Close</button>
+                {{! Save Button }}
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="modal-new-collection-save"
+                >Save New Collection</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{! New Card Modal }}
+      <div class="container">
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="modal-new-card"
+          tabindex="-1"
+          aria-labelledby="new-card-modal-label"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                {{! Modal Title }}
+                <h5 class="modal-title" id="new-card-modal-label">
+                  New Card
+                </h5>
+                {{! Close Button (X) }}
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              {{! Modal Body }}
+              <div class="modal-body">
+                <form>
+                  {{! Card Title }}
+                  <div class="mb-3">
+                    <label
+                      for="modal-input-new-card-title"
+                      class="form-label"
+                    >Title</label>
+                    <input
+                      class="form-control"
+                      id="modal-input-new-card-title"
+                    />
+                  </div>
+                  {{! Card Collection }}
+                  <div class="mb-3">
+                    <div class="mb-3">
+                      <label
+                        for="available-collections-selector"
+                        class="form-label"
+                      >Parent Collection</label>
+                      <select
+                        id="available-collections-selector"
+                        class="form-select"
+                      >
+                        <option value="" disabled selected>Please select a
+                          Collection</option>
+                      </select>
+                    </div>
+                  </div>
+                  {{! Card Description }}
+                  <div class="mb-3">
+                    <label
+                      for="modal-input-new-card-description"
+                      class="form-label"
+                    >Description</label>
+                    {{! Tabs }}
+                    <div>
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        {{! Raw Markdown Tab }}
+                        <li class="nav-item" role="presentation">
+                          <button
+                            class="nav-link active"
+                            id="home-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#modal-input-new-card-tab-raw-description"
+                            type="button"
+                            role="tab"
+                            aria-controls="modal-input-new-card-tab-raw-description"
+                            aria-selected="true"
+                          >Raw Markdown</button>
+                        </li>
+                        {{! Rendered Markdown Tab }}
+                        <li class="nav-item" role="presentation">
+                          <button
+                            class="nav-link"
+                            id="profile-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#modal-input-new-card-tab-markdown-description"
+                            type="button"
+                            role="tab"
+                            aria-controls="modal-input-new-card-tab-markdown-description"
+                            aria-selected="false"
+                          >Preview</button>
+                        </li>
+                      </ul>
+                      {{! Raw Markdown Content }}
+                      <div class="tab-content" id="myTabContent">
+                        <div
+                          class="tab-pane fade show active"
+                          id="modal-input-new-card-tab-raw-description"
+                          role="tabpanel"
+                          aria-labelledby="home-tab"
+                          tabindex="0"
+                        >
+                          <div class="mt-2">
+                            <textarea
+                              class="form-control"
+                              id="modal-input-new-card-description"
+                              rows="6"
+                            ></textarea>
+                          </div>
+                        </div>
+                        {{! Rendered Markdown Content }}
+                        <div
+                          class="tab-pane fade"
+                          id="modal-input-new-card-tab-markdown-description"
+                          role="tabpanel"
+                          aria-labelledby="profile-tab"
+                          tabindex="0"
+                        >
+                          <div class="mt-2 ps-3 pt-2" id="modal-input-new-card-markdown">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                {{! Close Button (Btn) }}
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >Close</button>
+                {{! Save Button }}
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="modal-new-card-save"
+                >Save New Card</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {{! Search Modal }}
       <div class="container">
         <!-- Modal -->
@@ -133,7 +348,7 @@
               {{! Modal Body }}
               <div class="modal-body">
                 <div class="container">
-                  <div class="row">
+                  <div class="row" id="search-body-modal-columns-row">
                     <div class="col">
                       <h4 id="queried-collections-header">Collections</h4>
                       <div id="queried-collections">
@@ -146,7 +361,7 @@
                   </div>
                 </div>
               </div>
-              <div class="modal-footer">
+              <div class="modal-footer justify-content-center">
                 {{! Close Button (Btn) }}
                 <button
                   type="button"
@@ -159,6 +374,7 @@
         </div>
       </div>
     </div>
+
     {{! Bootstrap script }}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -167,6 +383,7 @@
     ></script>
     {{! Local index script }}
     <script src="/js/modal-handler.js"></script>
+    <script src="/js/card-modal-handler.js"></script>
     <script src="/js/logout-handler.js"></script>
     <script src="/js/search-handler.js"></script>
     <script src="/js/index.js"></script>

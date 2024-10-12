@@ -11,30 +11,29 @@
               data-collection-field="title"
             >{{this.title}}</h5>
             <p
-              class="card-text"
+              class="card-text overflow-hidden"
               data-collection-id="{{this.id}}"
               data-collection-field="description"
+              style="height: 80px;"
             >{{this.description}}</p>
-            <div class="tag-container">
-              {{#each this.tags}}
-                <span class="badge bg-secondary">{{this}}</span>
-              {{/each}}
+            <div class="card-footer d-flex justify-content-between">
+              <button
+                class="btn btn-primary mt-2"
+                data-bs-toggle="modal"
+                data-bs-target="#editCollectionModal"
+                data-collection-id="{{this.id}}"
+              >
+                <i class="fas fa-edit"></i>
+                EDIT
+              </button>
+              <button
+                class="btn btn-info mt-2"
+                data-collection-id="{{this.id}}"
+                onclick="openCollection({{this.id}})"
+              >
+                Open Collection
+              </button>
             </div>
-            <button
-              class="btn btn-primary mt-2"
-              data-bs-toggle="modal"
-              data-bs-target="#editCollectionModal"
-              data-collection-id="{{this.id}}"
-            >
-              <i class="fas fa-edit"></i>
-              EDIT
-            </button>
-            <button
-              class="btn btn-info mt-2"
-              onclick="openCollection({{this.id}})"
-            >
-              Open Collection
-            </button>
           </div>
         </div>
       </div>
@@ -84,10 +83,6 @@
               rows="3"
               required
             ></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="collectionColor" class="form-label">Color</label>
-            <input type="color" class="form-control" id="collectionColor" />
           </div>
         </form>
       </div>
