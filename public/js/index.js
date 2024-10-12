@@ -72,7 +72,7 @@ document.body.addEventListener("click", async (event) => {
 // Bootstrap show-modal event listener
 document.addEventListener("shown.bs.modal", () => {
   // Focus on text input if modal opened is search modal
-  if (modalHandler.currentModal == "nav-search") {
+  if (modalHandler.currentModal == "modal-search") {
     var searchInput = document.getElementById("search-text-input");
     searchInput.focus();
   }
