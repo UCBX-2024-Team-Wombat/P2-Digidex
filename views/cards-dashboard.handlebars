@@ -1,37 +1,38 @@
-<h1>{{title}}</h1>
+<h3 class="mb-1">{{title}}</h3>
+<hr class="mt-1 mb-3">
+
 {{> card-modal}}
 
 <div class="container">
-<div class= "d-flex row gap-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-
-    {{#each cards as |card|}}
-    <div class="card flex-md-fill p-3 text-center" style="width: 100%; max-width: 17rem; overflow: hidden; ">
-        <h3>{{card.title}}</h3>
-        <p class="card-body" style="object-fit: cover;">{{{card.description}}}</p>
-        <button type="button" class="btn btn-primary font-size: 10px edit-card" id="myBtn" data-id="{{@index}}">Edit
-            ✏️</button>
-        <!--button type="button" class="btn btn-primary font-size: 10px edit-card" id="myBtn" data-id="{{@index}}">Edit ✏️</button-->
-
-        <!-- an additional each loop <p>{{this.tags}}</p> -->
-        <!-- for each card, pass in the card tile -->
+    <div class= "d-flex row gap-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        {{#each cards as |card|}}
+        <div class="card flex-md-fill p-1" style="width: 100%; max-width: 17rem;">
+            <div class="card-body">
+                <h3 class="card-title" style="font-size: 1.5em;">{{card.title}}</h3>
+                <div class="overflow-hidden">
+                    <div class="card-text" style="max-height: 120px;">{{{card.markdown_description}}}</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-primary" id="button-edit" data-id="{{@index}}">Edit ✏️</button>
+                <button type="button" class="btn btn-success" id="button-view" data-id="{{card.id}}">View</button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
 </div>
-</div>
-
-
-
-
 <script>
     function editCard(cardIndex) {
-        //const cards = JSON.parse ("{{{ json cards }}}");
         const cards = {{{ json cards }}};
-    console.log(cards[cardIndex]);
-    const collectionName = document.getElementById("collection-name");
-    const collectionDesc = document.getElementById("collection-desc");
-    collectionName.value = cards[cardIndex].title;
-    collectionDesc.value = cards[cardIndex].description;
-    document.getElementById("myModal").setAttribute("data-id", cards[cardIndex].id);
+        const cardTitle = document.getElementById("modal-card-title");
+        const cardDescription = document.getElementById("modal-card-description");
+        const cardMarkdown = document.getElementById('modal-card-markdown');
+        cardTitle.value = cards[cardIndex].title;
+        cardDescription.value = cards[cardIndex].description;
+        cardMarkdown.innerHTML = cards[cardIndex].markdown_description;
+        document.getElementById("myModal").setAttribute("data-id", cards[cardIndex].id);
     };
 
     function openCardModal(index) {
@@ -39,51 +40,54 @@
         const modal = new bootstrap.Modal(document.getElementById("myModal"));
         modal.show();
     }
-    document.querySelectorAll(".edit-card").forEach(function (button, index) {
+
+    document.querySelectorAll("#button-edit").forEach(function (button, index) {
         button.addEventListener("click", function () {
             openCardModal(index);
         })
+    });
+
+    document.querySelectorAll("#button-view").forEach(function (button, index) {
+        button.addEventListener("click", function () {
+            window.location = `/card/${button.dataset.id}`;
+        })
+    })
+
+    document.addEventListener('input', async (event) => {
+
+        if(event.target.id == 'modal-card-description'){
+
+            const santizedMarkdown = await fetch('/api/card/parse-markdown', {
+                method: 'POST',
+                body: JSON.stringify({value: event.target.value}),
+                headers: {'Content-Type': 'application/json'}
+            });
+
+            if(santizedMarkdown.ok){
+                document.getElementById('modal-card-markdown').innerHTML = await santizedMarkdown.json();
+            }
+        }
+
     })
 
     const submitBtn = document.getElementById("save-card");
-        submitBtn.addEventListener("click", async function () {
-            const id = document.getElementById("myModal").getAttribute("data-id");
-            const title = document.getElementById ("collection-name").value;
-            const description = document.getElementById ("collection-desc").value;
-            const response = await fetch(`/api/card/update/${id}`, {
-                method: "POST",
-                body: JSON.stringify({id, title, description}),
-                headers: { "Content-Type": "application/json" },
-            });
-             if(response.ok){
-                //closeCardEditModal();
-                window.location.reload();
-            }
-            else {
-                console.log('something went wrong');
-            }
-        })
-
-
-    /*document.getElementById('saveButton').addEventListener('click', function () {
-        const updatedInfo = document.getElementById('updatedInfo').value;
-
-        // Save the updated information (e.g., to localStorage)
-        localStorage.setItem('infoKey', updatedInfo);
-
-        // Close the modal
-        document.getElementById('updateModal').style.display = 'none';
-
-        // Optionally refresh the display
-        displayUpdatedInfo();
+        
+    submitBtn.addEventListener("click", async function (event) {
+        event.preventDefault();
+        const id = document.getElementById("myModal").getAttribute("data-id");
+        const title = document.getElementById ("modal-card-title").value;
+        const description = document.getElementById ("modal-card-description").value;
+        const response = await fetch(`/api/card/update/${id}`, {
+            method: "POST",
+            body: JSON.stringify({id, title, description}),
+            headers: { "Content-Type": "application/json" },
+        });
+        if(response.ok){
+            //closeCardEditModal();
+            window.location.reload();
+        }
+        else {
+            console.log('something went wrong');
+        }
     });
-
-    function displayUpdatedInfo() {
-        const info = localStorage.getItem('infoKey');
-        // Update the UI with the new information
-        document.getElementById('infoDisplay').innerText = info;
-    }*/
-
-
-
 </script>
