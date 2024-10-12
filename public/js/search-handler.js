@@ -69,7 +69,6 @@ function populateSearchResults(data, tableType) {
 }
 
 function createTile(record, tableType) {
-  console.log("create tile record: ", record)
   const anchorWrapper = document.createElement("a");
   const isCard = tableType == 'cards';
   const isCollection = tableType == 'collections';
