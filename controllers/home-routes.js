@@ -72,16 +72,9 @@ router.get('/collection/:id', async (req, res) => {
         include: {
           model: Card
         }
-
-
       }
     ) 
-    const collection = collectionData.get ({plain: true});
-    console.log("")
-    console.log("")
-    console.log("")
-    console.log("")
-    console.log(collection.cards);
+    const collection = collectionData.get({plain: true});
   
     res.render('cards-dashboard', { ...collection });
   } catch (error) {
