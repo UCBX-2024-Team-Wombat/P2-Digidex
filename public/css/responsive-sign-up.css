@@ -1,0 +1,22 @@
+/*Responsive css sign up page*/
+/**/
+
+/*Responsive mobile(max-width: 425px)*/
+@media (max-width: 425px){
+    div{
+        display: list-item;
+        max-width:fit-content;
+        justify-content: center;
+    }
+    h1{
+        display: list-item;
+        max-width:100%;
+        justify-content: center;
+    }
+    button{
+        align-content: center;
+    }
+    #card{
+        background-color: lightgray;
+    }
+}
