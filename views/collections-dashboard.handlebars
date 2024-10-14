@@ -1,3 +1,4 @@
+<link href="/css/responsive-collections-dashboard-style.css" rel="stylesheet" />
 <div class="container">
   <h3 class="mb-4">My Collections</h3>
   <div class="row">
@@ -16,23 +17,28 @@
               data-collection-field="description"
               style="height: 80px;"
             >{{this.description}}</p>
-            <div class="card-footer d-flex justify-content-between">
+            <div
+              class="card-footer d-flex justify-content-between align-items-center"
+            >
+
               <button
-                class="btn btn-primary mt-2"
+                class="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#editCollectionModal"
                 data-collection-id="{{this.id}}"
               >
                 <i class="fas fa-edit"></i>
-                EDIT
+                Edit
               </button>
+
               <button
-                class="btn btn-info mt-2"
+                class="btn btn-info"
                 data-collection-id="{{this.id}}"
                 onclick="openCollection({{this.id}})"
               >
-                Open Collection
+                Open
               </button>
+
             </div>
           </div>
         </div>
