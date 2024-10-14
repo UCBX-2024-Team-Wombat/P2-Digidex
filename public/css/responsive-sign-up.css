@@ -2,15 +2,14 @@
 /**/
 
 /*Responsive mobile(max-width: 425px)*/
-@media (max-width: 425px){
+@media (max-width: 426px){
     div{
         display: list-item;
-        max-width:fit-content;
+        /*max-width:fit-content;*/
         justify-content: center;
     }
     h1{
         display: list-item;
-        max-width:100%;
         justify-content: center;
     }
     button{
@@ -18,5 +17,23 @@
     }
     #card{
         background-color: lightgray;
+    }
+    #label-email{
+        justify-content: center;
+        width: 50%;
+        margin-left: 30%;
+
+    }
+    #label-password{
+        justify-content: center;
+        width: 50%;
+        margin-left: 23%;
+
+    }
+    #label-re-password{
+        justify-content: center;
+        width: 50%;
+        margin-left: 10%;
+
     }
 }
