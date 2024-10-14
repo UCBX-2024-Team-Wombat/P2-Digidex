@@ -3,26 +3,13 @@
   height: 400px;
 }
 
-/* Float display for "My Account" section */
-#my-account-interface {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  z-index: 10;
-  border-bottom: 1px solid black;
-  text-align: right;
-  min-width: 300px;
-}
-
-/* Override standard hyperlink appearance within "My Account" section */
-#my-account-dropdown-label {
-    color: black;
-    text-decoration: none;
-}
-
 #search-text-input {
   border: 0px;
   outline: none;
+}
+
+#primary-nav-list li * {
+  padding-left: 0;
 }
 
 .search-tile {
