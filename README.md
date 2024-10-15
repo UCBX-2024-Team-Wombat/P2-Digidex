@@ -27,7 +27,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Resources](#resources)
-- [CodeReferences](#codereferences)
 - [LinkToRender](#linktorender)
 
 ## Installation:
@@ -49,18 +48,30 @@
 - Login.handler: module 14 mini project activity 28 /public/js/login.js
 - User-routes.js: module 14 mini project activity 28 / controllers/ api/ user-routes
 - Card-modal.handlebars: 
-- https://www.w3schools.com/bootstrap/bootstrap_ref_js_modal.asp 
-- https://www.w3schools.com/bootstrap/bootstrap_dropdowns.asp 
+    - https://www.w3schools.com/bootstrap/bootstrap_ref_js_modal.asp 
+    - https://www.w3schools.com/bootstrap/bootstrap_dropdowns.asp 
 - Card-modal.handlebars: https://getbootstrap.com/docs/5.0/components/card/#titles-text-and-links 
-
 - Remove input border: https://stackoverflow.com/questions/3397113/how-to-remove-focus-border-outline-around-text-input-boxes-chrome
 - Focus on field after bs.show: https://www.tutorialrepublic.com/faq/how-to-set-focus-on-input-field-or-textarea-inside-a-bootstrap-modal.php
 Keydown handling: https://stackoverflow.com/questions/3369593/how-to-detect-escape-key-press 
 - Typing timeout: https://bobbyhadz.com/blog/detect-when-user-stops-typing-in-javascript
 - How to build a markdown blog using node.js, express, and mongodb: https://www.youtube.com/watch?v=1NrHkjlWVhM
-
-## CodeReferences: 
-
+- mini project
+    - /controllers/api/user-routes.js
+    - Used for: our user-routes file structure
+    - /public/js/login.js
+    - Used for: our sign-up-handler.js
+- Bootstrap documentation: https://getbootstrap.com/docs/4.1/components/card/ for sign-up.handlebar
+- Sequelize documentation: https://sequelize.org/docs/v6/advanced-association-concepts/advanced-many-to-many/
+- https://handlebarsjs.com/guide/builtin-helpers.html#each
+- https://sequelize.org/docs/v6/advanced-association-concepts/advanced-many-to-many/
+- https://handlebarsjs.com/guide/builtin-helpers.html#each
+- https://stackoverflow.com/questions/7291773/how-to-use-delete-on-cascade-on-many-to-one-relation
+- https://coding-boot-camp.github.io/full-stack/render/deploy-with-render-and-postgresql
+- https://vanmarciano.pro/beginners-guide-to-rem-em-and-px/
+- https://stackoverflow.com/questions/7291773/how-to-use-delete-on-cascade-on-many-to-one-relation 
+- https://coding-boot-camp.github.io/full-stack/render/deploy-with-render-and-postgresql 
+- https://vanmarciano.pro/beginners-guide-to-rem-em-and-px/ 
 
 ## LinkToRender:
 - 
