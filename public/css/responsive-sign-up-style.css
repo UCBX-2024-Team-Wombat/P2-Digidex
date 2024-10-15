@@ -16,7 +16,7 @@ input[type="email"], input[type="passwprd"] {
 /*Added responsive styles for mobile devices (max-width 768px).*/
 
 
-@media (max-with: 768px) {
+@media (max-width: 768px) {
     .card {
         width: 90%;
         margin: auto;
