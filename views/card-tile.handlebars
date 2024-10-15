@@ -1,0 +1,17 @@
+<div class="card-tile"></div>
+    {{#each Cards}}
+        <div class="card">
+            <!-- displaying the card tile title and description-->
+            <h3>{{this.title}}</h3>
+            <p>{{this.description}}</p>
+            <!-- a button with the class button update allowing users to trigger an action to update a card-->
+            <button class="button-update">Update</button> 
+            <!--tag section, allows user to add a tag-->
+            <div class="adding-tags">
+                <label for="add-tags">Add Tags:</label>
+                <input type="text" id="add-tags" placeholder="Enter tags">
+                <button class= "button-tags">Add</button>
+        </div>
+     </div>
+    {{/each}}
+</div>

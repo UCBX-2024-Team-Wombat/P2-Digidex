@@ -25,11 +25,19 @@ const sessionObject = {
 
 app.use(session(sessionObject));
 
-// Create handlebars object and set as app engine
-const hbs = exphbs.create()
+//cards modal
+const hbs = exphbs.create({
+  helpers: {
+    json(content) {
+     return JSON.stringify(content);
+    }
+  }
+})
 
+// Create handlebars object and set as app engine
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
 
 // Use express native json middleware
 app.use(express.json());
