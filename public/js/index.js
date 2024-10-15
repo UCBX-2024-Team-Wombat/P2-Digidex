@@ -3,9 +3,42 @@
 const modalHandler = new ModalHandler();
 let searchTimer;
 const searchTimerWaitTime = 500;
-
 // Listeners
 // ===============================
+
+// Page Load Listener
+document.addEventListener("DOMContentLoaded", async () => {
+  const usersCollections = await fetch("/api/collection/user-collections", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  populateCollectionsSelect(await usersCollections.json());
+});
+
+// Input Listener
+document.addEventListener("input", async (event) => {
+
+  if(event.target.id == 'modal-input-new-card-description'){
+
+    const response = await fetch('/api/card/parse-markdown', {
+      method: 'POST',
+      body: JSON.stringify({ value: event.target.value}),
+      headers: {'Content-Type': "application/json"}
+    });
+
+    if(response.ok){
+      const parsedResponse = await response.json();
+      document.getElementById('modal-input-new-card-markdown').innerHTML = parsedResponse;
+    }
+    else {
+      console.log('Markdown loading error');
+    }
+
+
+  }
+
+})
 
 // Click listener
 document.body.addEventListener("click", async (event) => {
@@ -16,6 +49,13 @@ document.body.addEventListener("click", async (event) => {
   // Pass clicked modal launchers to modal handler
   if (isModal == "yes") {
     modalHandler.openModal(targetId);
+  }
+
+  if (
+    targetId == "modal-new-collection-save" ||
+    targetId == "modal-new-card-save"
+  ) {
+    modalHandler.getModalInputsAndFetch();
   }
 
   // Handle logout when logout clicked
@@ -29,94 +69,10 @@ document.body.addEventListener("click", async (event) => {
   }
 });
 
-document.body.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  // Query all forms on page
-  const forms = document.querySelectorAll("form");
-
-  // Create Form Id to Form data map
-  const formsMap = {};
-
-  for (const form of forms) {
-    formsMap[form.id] = form;
-  }
-
-  // If queried forms includes login form
-  if (Object.keys(formsMap).includes("login-form")) {
-    const invalidLoginText = document.getElementById("invalid-login-text");
-    const serverErrorText = document.getElementById("login-server-error-text");
-
-    invalidLoginText.hidden = true;
-    serverErrorText.hidden = true;
-
-    const formInputs = {
-      password: document.getElementById("inputPassword").value.trim(),
-      email: document.getElementById("inputEmail").value.trim(),
-    };
-
-    loginResponseStatus = await handleLogin(formInputs);
-
-    if (loginResponseStatus == 200) {
-      // If successful, redirect the browser to the home page
-      document.location.replace("/");
-    } else if (loginResponseStatus == 500) {
-      // If a server error occurs, reveal error text to notify
-      serverErrorText.hidden = false;
-    } else {
-      // If invalid username/password, reveal error text to notify
-      invalidLoginText.hidden = false;
-    }
-  }
-});
-
-// Keydown listener
-document.body.addEventListener("keydown", (event) => {
-  // Handle search text completion
-  if (event.target.id == "search-text-input") {
-    // Set keys to not consider in keydown for search text
-    const keysToIgnore = [
-      "Escape",
-      "Enter",
-      "ArrowDown",
-      "ArrowLeft",
-      "ArrowUp",
-      "ArrowRight",
-      "Alt",
-      "Tab",
-      "CapsLock",
-      "Shift",
-      "Control",
-      "Meta",
-      "NumLock",
-    ];
-
-    if (keysToIgnore.includes(event.key) == false) {
-      clearTimeout(searchTimer); // Clear any existing timeouts from prior keydowns
-
-      searchTimer = setTimeout(async () => { // Set global searchTimer to timeout from setTimeout()
-        // When timeout complete, send entered text to search API
-        
-        // Send searched text to collection search endpoint
-        const queriedCollections = await queryFromSearchText(event.target.value, "collections");
-        document.getElementById('queried-collections-header').innerText = `Collections (${queriedCollections.length})`
-        // Populate search page with results 
-        populateSearchResults(queriedCollections, 'collections');
-        
-        // Send searched text to cards endpoint
-        const queriedCards = await queryFromSearchText(event.target.value, "cards");
-        document.getElementById('queried-cards-header').innerText = `Cards (${queriedCards.length})`
-        // Populate search page with results 
-        populateSearchResults(queriedCards, 'cards');
-      }, searchTimerWaitTime); // Wait time designated in global searchTimerWaitTime before running function
-    }
-  }
-});
-
 // Bootstrap show-modal event listener
 document.addEventListener("shown.bs.modal", () => {
   // Focus on text input if modal opened is search modal
-  if (modalHandler.modalIsOpen("nav-search")) {
+  if (modalHandler.currentModal == "modal-search") {
     var searchInput = document.getElementById("search-text-input");
     searchInput.focus();
   }
@@ -125,19 +81,15 @@ document.addEventListener("shown.bs.modal", () => {
 // Bootstrap hide-modal event listener
 document.addEventListener("hidden.bs.modal", () => {
   // Clear values from all modal inputs on close modal event
-
   // if(modalHandler.modalIsOpen("nav-search")){
-    
   //   // Reset search input
   //   const modalInputs = document.getElementById('search-text-input');
   //   modalInputs.value = null;
-
   //   // Reset search result columns
   //   const searchResultColumns = [
   //     document.getElementById('queried-collections'),
   //     document.getElementById('queried-cards')
   //   ];
-
   //   for(const column of searchResultColumns){
   //     column.innerHTML = null;
   //   }
@@ -146,3 +98,17 @@ document.addEventListener("hidden.bs.modal", () => {
 
 // Functions
 // ===============================
+
+function populateCollectionsSelect(collections) {
+  const selectElement = document.getElementById(
+    "available-collections-selector"
+  );
+
+  for (const collection of collections) {
+    const option = document.createElement("option");
+    option.value = collection.id;
+    option.innerText = collection.title;
+
+    selectElement.appendChild(option);
+  }
+}
