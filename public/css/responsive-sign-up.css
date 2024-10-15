@@ -21,18 +21,13 @@
     #label-email{
         justify-content: center;
         width: 50%;
-        margin-left: 30%;
-
     }
     #label-password{
         justify-content: center;
         width: 50%;
-        margin-left: 23%;
-
     }
     #label-re-password{
         justify-content: center;
         width: 50%;
-        margin-left: 10%;
     }
 }
