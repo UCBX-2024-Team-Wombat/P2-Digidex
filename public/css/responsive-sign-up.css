@@ -1,0 +1,33 @@
+/*Responsive css sign up page*/
+/**/
+
+/*Responsive mobile(max-width: 425px)*/
+@media (max-width: 426px){
+    div{
+        /* display: list-item; */
+        /*max-width:fit-content;*/
+        justify-content: center;
+    }
+    h1{
+        display: list-item;
+        justify-content: center;
+    }
+    button{
+        align-content: center;
+    }
+    #card{
+        background-color: lightgray;
+    }
+    #label-email{
+        justify-content: center;
+        width: 50%;
+    }
+    #label-password{
+        justify-content: center;
+        width: 50%;
+    }
+    #label-re-password{
+        justify-content: center;
+        width: 50%;
+    }
+}
