@@ -4,7 +4,7 @@
 /*Responsive mobile(max-width: 425px)*/
 @media (max-width: 426px){
     div{
-        display: list-item;
+        /* display: list-item; */
         /*max-width:fit-content;*/
         justify-content: center;
     }
@@ -34,6 +34,5 @@
         justify-content: center;
         width: 50%;
         margin-left: 10%;
-
     }
 }
